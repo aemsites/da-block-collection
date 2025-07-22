@@ -5,7 +5,6 @@
       "id": "cards",
       "plugins": {
         "da": {
-          "name": "cards",
           "unsafeHTML": "<div><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div></div>"
         }
       },
@@ -17,7 +16,6 @@
       "id": "card",
       "plugins": {
         "da": {
-          "name": "card",
           "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>"
         }
       },

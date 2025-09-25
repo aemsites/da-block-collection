@@ -277,6 +277,15 @@ function createOptimizedPicture(
     picture.appendChild(source);
   });
 
+  // jpeg
+  breakpoints.forEach((br) => {
+    const source = document.createElement('source');
+    if (br.media) source.setAttribute('media', br.media);
+    source.setAttribute('type', 'image/jpeg');
+    source.setAttribute('srcset', `${origin}${pathname}?width=${br.width}&format=jpeg&optimize=medium`);
+    picture.appendChild(source);
+  });
+
   // fallback
   breakpoints.forEach((br, i) => {
     if (i < breakpoints.length - 1) {

@@ -7,6 +7,7 @@
         {
           "title": "Text",
           "id": "text",
+          "model": "text",
           "plugins": {
             "da": {
               "name": "text",
@@ -17,6 +18,7 @@
         {
           "title": "Image",
           "id": "image",
+          "model": "image",
           "plugins": {
             "da": {
               "name": "image",
@@ -50,6 +52,8 @@
         {
           "title": "Accordion",
           "id": "accordion",
+          "model": "accordion",
+          "filter": "accordion",
           "plugins": {
             "da": {
               "name": "accordion",
@@ -61,6 +65,7 @@
         {
           "title": "Accordion Item",
           "id": "accordion-item",
+          "model": "accordion-item",
           "plugins": {
             "da": {
               "name": "accordion-item",
@@ -72,27 +77,29 @@
         {
           "title": "Cards",
           "id": "cards",
+          "model": "cards",
+          "filter": "cards",
           "plugins": {
             "da": {
               "unsafeHTML": "<div class=\"cards\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div></div>"
             }
-          },
-          "model": "cards",
-          "filter": "cards"
+          }
         },
         {
           "title": "Card",
           "id": "card",
+          "model": "card",
           "plugins": {
             "da": {
               "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>"
             }
-          },
-          "model": "card"
+          }
         },
         {
           "title": "Carousel",
           "id": "carousel",
+          "model": "carousel",
+          "filter": "carousel",
           "plugins": {
             "da": {
               "unsafeHTML": "<div class=\"carousel\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>"
@@ -102,6 +109,7 @@
         {
           "title": "Carousel Slide",
           "id": "carousel-item",
+          "model": "carousel-item",
           "plugins": {
             "da": {
               "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>"
@@ -111,6 +119,8 @@
         {
           "title": "Columns",
           "id": "columns",
+          "model": "columns",
+          "filter": "columns",
           "plugins": {
             "da": {
               "name": "columns",
@@ -123,6 +133,8 @@
         {
           "title": "Columns Row",
           "id": "columns-row",
+          "model": "columns-row",
+          "filter": "columns-row",
           "plugins": {
             "da": {
               "name": "columns-row",
@@ -133,6 +145,8 @@
         {
           "title": "Columns Cell",
           "id": "columns-cell",
+          "model": "columns-cell",
+          "filter": "columns-cell",
           "plugins": {
             "da": {
               "unsafeHTML": "<div></div>",
@@ -143,6 +157,7 @@
         {
           "title": "Fragment",
           "id": "fragment",
+          "model": "fragment",
           "plugins": {
             "da": {
               "unsafeHTML": "<div class=\"fragment\"><div><div><p><a href=\"\">Fragment URL</a></p></div></div></div>"
@@ -152,6 +167,7 @@
         {
           "title": "Hero",
           "id": "hero",
+          "model": "hero",
           "plugins": {
             "da": {
               "unsafeHTML": "<div class=\"hero\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture><h1></h1></div></div></div>"
@@ -161,6 +177,7 @@
         {
           "title": "Quote",
           "id": "quote",
+          "model": "quote",
           "plugins": {
             "da": {
               "name": "quote",
@@ -172,6 +189,7 @@
         {
           "title": "Search",
           "id": "search",
+          "model": "search",
           "plugins": {
             "da": {
               "name": "search",
@@ -183,6 +201,8 @@
         {
           "title": "Tabs",
           "id": "tabs",
+          "model": "tabs",
+          "filter": "tabs",
           "plugins": {
             "da": {
               "unsafeHTML": "<div class=\"tabs\"><div><div><p></p></div><div></div></div></div>"
@@ -192,6 +212,7 @@
         {
           "title": "Tabs Item",
           "id": "tabs-item",
+          "model": "tabs-item",
           "plugins": {
             "da": {
               "unsafeHTML": "<div><div><p></p></div><div></div></div>"
@@ -201,6 +222,7 @@
         {
           "title": "Video",
           "id": "video",
+          "model": "video",
           "plugins": {
             "da": {
               "name": "video",

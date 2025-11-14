@@ -11,10 +11,8 @@
           "rows": 1,
           "columns": 2,
           "fields": [
-            {
-              "summary": "div:nth-child(1)",
-              "text": "div:nth-child(2)"
-            }
+            { "name": "summary", "selector": "div:nth-child(1)"},
+            { "name": "text", "selector": "div:nth-child(2)"}
           ]
         }
       }

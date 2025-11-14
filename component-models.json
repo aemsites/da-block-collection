@@ -161,7 +161,7 @@
       },
       {
         "component": "text",
-        "name": "text",
+        "name": "urlText",
         "label": "Fragment URL Text"
       }
     ]

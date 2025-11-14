@@ -8,11 +8,9 @@
         "da": {
           "unsafeHTML": "<div class=\"hero\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture><h1></h1></div></div></div>",
           "fields": [
-            {
-              "image": "div:nth-child(1)>div:nth-child(1)>picture>img[src]",
-              "imageAlt": "div:nth-child(1)>div:nth-child(1)>picture>img[alt]",
-              "text": "div:nth-child(1)>div:nth-child(1)>h1"
-            }
+            { "name": "image", "selector": "div:nth-child(1)>div:nth-child(1)>picture>img[src]"},
+            { "name": "imageAlt", "selector": "div:nth-child(1)>div:nth-child(1)>picture>img[alt]"},
+            { "name": "text", "selector": "div:nth-child(1)>div:nth-child(1)>h1" }
           ]
         }
       }

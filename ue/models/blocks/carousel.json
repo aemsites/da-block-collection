@@ -19,11 +19,9 @@
         "da": {
           "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>",
           "fields": [
-            {
-              "backgroundImage": "div:nth-child(1)>picture:nth-child(1)>img[src]",
-              "backgroundImageAlt": "div:nth-child(1)>picture:nth-child(1)>img[alt]",
-              "text": "div:nth-child(2)"
-            }
+            { "name": "backgroundImage", "selector": "div:nth-child(1)>picture:nth-child(1)>img[src]"},
+            { "name": "backgroundImageAlt", "selector": "div:nth-child(1)>picture:nth-child(1)>img[alt]"},
+            { "name": "text", "selector": "div:nth-child(2)"}
           ]
         }
       }

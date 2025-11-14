@@ -19,10 +19,8 @@
         "da": {
           "unsafeHTML": "<div><div><p></p></div><div></div></div>",
           "fields": [
-            {
-              "name": "div:nth-child(1)>p",
-              "content": "div:nth-child(2)"
-            }
+            { "name": "name", "selector": "div:nth-child(1)>p"},
+            { "name": "content", "selector": "div:nth-child(2)"}
           ] 
         }
       }

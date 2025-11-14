@@ -10,10 +10,8 @@
           "rows": 1,
           "columns": 1,
           "fields": [
-            {
-              "quote": "div:nth-child(1)>div",
-              "author": "div:nth-child(2)>div>p"
-            }
+            { "name": "quote", "selector": "div:nth-child(1)>div"},
+            { "name": "author", "selector": "div:nth-child(2)>div>p"}
           ]
         }
       }

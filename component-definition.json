@@ -58,7 +58,13 @@
             "da": {
               "name": "accordion",
               "rows": 1,
-              "columns": 2
+              "columns": 2,
+              "fields": [
+                {
+                  "summary": "div:nth-child(1)",
+                  "text": "div:nth-child(2)"
+                }
+              ]
             }
           }
         },
@@ -91,7 +97,14 @@
           "model": "card",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>"
+              "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>",
+              "fields": [
+                {
+                  "image": "div:nth-child(1)>picture:nth-child(1)>img[src]",
+                  "imageAlt": "div:nth-child(1)>picture:nth-child(1)>img[alt]",
+                  "text": "div:nth-child(2)"
+                }
+              ]
             }
           }
         },
@@ -112,7 +125,14 @@
           "model": "carousel-item",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>"
+              "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>",
+              "fields": [
+                {
+                  "backgroundImage": "div:nth-child(1)>picture:nth-child(1)>img[src]",
+                  "backgroundImageAlt": "div:nth-child(1)>picture:nth-child(1)>img[alt]",
+                  "text": "div:nth-child(2)"
+                }
+              ]
             }
           }
         },
@@ -160,7 +180,13 @@
           "model": "fragment",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div class=\"fragment\"><div><div><p><a href=\"\">Fragment URL</a></p></div></div></div>"
+              "unsafeHTML": "<div class=\"fragment\"><div><div><p><a href=\"\">Fragment URL</a></p></div></div></div>",
+              "fields": [
+                {
+                  "url": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)[href]",
+                  "text": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)"
+                }
+              ]
             }
           }
         },
@@ -170,7 +196,14 @@
           "model": "hero",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div class=\"hero\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture><h1></h1></div></div></div>"
+              "unsafeHTML": "<div class=\"hero\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture><h1></h1></div></div></div>",
+              "fields": [
+                {
+                  "image": "div:nth-child(1)>div:nth-child(1)>picture>img[src]",
+                  "imageAlt": "div:nth-child(1)>div:nth-child(1)>picture>img[alt]",
+                  "text": "div:nth-child(1)>div:nth-child(1)>h1"
+                }
+              ]
             }
           }
         },
@@ -182,7 +215,13 @@
             "da": {
               "name": "quote",
               "rows": 1,
-              "columns": 1
+              "columns": 1,
+              "fields": [
+                {
+                  "quote": "div:nth-child(1)>div",
+                  "author": "div:nth-child(2)>div>p"
+                }
+              ]
             }
           }
         },
@@ -194,7 +233,13 @@
             "da": {
               "name": "search",
               "rows": 1,
-              "columns": 1
+              "columns": 1,
+              "fields": [
+                {
+                  "searchUrl": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a[href]",
+                  "searchUrlText": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a"
+                }
+              ]
             }
           }
         },
@@ -215,7 +260,13 @@
           "model": "tabs-item",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div><div><p></p></div><div></div></div>"
+              "unsafeHTML": "<div><div><p></p></div><div></div></div>",
+              "fields": [
+                {
+                  "name": "div:nth-child(1)>p",
+                  "content": "div:nth-child(2)"
+                }
+              ]
             }
           }
         },
@@ -227,7 +278,14 @@
             "da": {
               "name": "video",
               "rows": 1,
-              "columns": 1
+              "columns": 1,
+              "fields": [
+                {
+                  "videoUrl": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a[href]",
+                  "videoUrlText": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a",
+                  "posterImage": "div:nth-child(1)>div:nth-child(1)>picture>img[src]"
+                }
+              ]
             }
           }
         }

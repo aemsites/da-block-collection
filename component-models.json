@@ -69,14 +69,14 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "div:nth-child(1)",
+        "name": "summary",
         "value": "",
         "label": "Summary",
         "required": true
       },
       {
         "component": "richtext",
-        "name": "div:nth-child(2)",
+        "name": "text",
         "value": "",
         "label": "Text",
         "valueType": "string",
@@ -90,20 +90,20 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
+        "name": "image",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]",
+        "name": "alt",
         "label": "Image Alt",
         "multi": false
       },
       {
         "component": "richtext",
-        "name": "div:nth-child(2)",
+        "name": "text",
         "value": "",
         "label": "Text",
         "valueType": "string"
@@ -116,19 +116,19 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
+        "name": "backgroundImage",
         "label": "Background Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]",
+        "name": "backgroundImageAlt",
         "label": "Background Image Alt"
       },
       {
         "component": "richtext",
-        "name": "div:nth-child(2)",
+        "name": "text",
         "label": "Text",
         "valueType": "string"
       }
@@ -155,13 +155,13 @@
     "fields": [
       {
         "component": "text",
-        "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)[href]",
+        "name": "url",
         "label": "Fragment URL",
         "required": true
       },
       {
         "component": "text",
-        "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)",
+        "name": "text",
         "label": "Fragment URL Text"
       }
     ]
@@ -172,20 +172,20 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
+        "name": "image",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]",
+        "name": "imageAlt",
         "label": "Alt",
         "value": ""
       },
       {
         "component": "text",
-        "name": "div:nth-child(1)>div:nth-child(1)>h1:nth-child(2)",
+        "name": "text",
         "value": "",
         "label": "Text",
         "valueType": "string"
@@ -198,13 +198,13 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "div:nth-child(1)>div:nth-child(1)",
+        "name": "quote",
         "label": "Quote",
         "required": true
       },
       {
         "component": "text",
-        "name": "div:nth-child(2)>div:nth-child(1)>p:nth-child(1)",
+        "name": "author",
         "label": "Author",
         "valueType": "string"
       }
@@ -216,13 +216,13 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)[href]",
+        "name": "searchUrl",
         "label": "Search URL",
         "required": true
       },
       {
         "component": "text",
-        "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)",
+        "name": "searchUrlText",
         "label": "Search URL Text",
         "valueType": "string"
       }
@@ -233,13 +233,13 @@
     "fields": [
       {
         "component": "text",
-        "name": "div:nth-child(1)>p:nth-child(1)",
+        "name": "name",
         "valueType": "string",
         "label": "Tab Name"
       },
       {
         "component": "richtext",
-        "name": "div:nth-child(2)",
+        "name": "content",
         "label": "Content",
         "valueType": "string"
       }
@@ -256,20 +256,20 @@
       },
       {
         "component": "text",
-        "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)[href]",
+        "name": "videoUrl",
         "label": "Video URL",
         "valueType": "string",
         "required": true
       },
       {
         "component": "text",
-        "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)",
+        "name": "videoUrlText",
         "label": "Video URL Text",
         "valueType": "string"
       },
       {
         "component": "reference",
-        "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(2)>img:nth-child(3)[src]",
+        "name": "posterImage",
         "label": "Poster Image",
         "valueType": "string"
       }

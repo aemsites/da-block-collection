@@ -8,7 +8,14 @@
         "da": {
           "name": "video",
           "rows": 1,
-          "columns": 1
+          "columns": 1,
+          "fields": [
+            {
+              "videoUrl": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a[href]",
+              "videoUrlText": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a",
+              "posterImage": "div:nth-child(1)>div:nth-child(1)>picture>img[src]"
+            }
+          ]
         }
       }
     }
@@ -25,20 +32,20 @@
         },
         {
           "component": "text",
-          "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)[href]",
+          "name": "videoUrl",
           "label": "Video URL",
           "valueType": "string",
           "required": true
         },
         {
           "component": "text",
-          "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)",
+          "name": "videoUrlText",
           "label": "Video URL Text",
           "valueType": "string"
         },
         {
           "component": "reference",
-          "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(2)>img:nth-child(3)[src]",
+          "name": "posterImage",
           "label": "Poster Image",
           "valueType": "string"
         }

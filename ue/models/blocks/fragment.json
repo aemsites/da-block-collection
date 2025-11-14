@@ -6,7 +6,13 @@
       "model": "fragment",
       "plugins": {
         "da": {
-          "unsafeHTML": "<div class=\"fragment\"><div><div><p><a href=\"\">Fragment URL</a></p></div></div></div>"
+          "unsafeHTML": "<div class=\"fragment\"><div><div><p><a href=\"\">Fragment URL</a></p></div></div></div>",
+          "fields": [
+            {
+              "url": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)[href]",
+              "text": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)"
+            }
+          ]
         }
       }
     }
@@ -17,13 +23,13 @@
       "fields": [
         {
           "component": "text",
-          "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)[href]",
+          "name": "url",
           "label": "Fragment URL",
           "required": true
         },
         {
           "component": "text",
-          "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)",
+          "name": "text",
           "label": "Fragment URL Text"
         }
       ]

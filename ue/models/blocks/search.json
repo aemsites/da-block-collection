@@ -8,7 +8,13 @@
         "da": {
           "name": "search",
           "rows": 1,
-          "columns": 1
+          "columns": 1,
+          "fields": [
+            {
+              "searchUrl": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a[href]",
+              "searchUrlText": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a"
+            }
+          ]
         }
       }
     }
@@ -20,13 +26,13 @@
         {
           "component": "text",
           "valueType": "string",
-          "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)[href]",
+          "name": "searchUrl",
           "label": "Search URL",
           "required": true
         },
         {
           "component": "text",
-          "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)",
+          "name": "searchUrlText",
           "label": "Search URL Text",
           "valueType": "string"
         }

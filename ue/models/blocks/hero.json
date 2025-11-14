@@ -6,7 +6,14 @@
       "model": "hero",
       "plugins": {
         "da": {
-          "unsafeHTML": "<div class=\"hero\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture><h1></h1></div></div></div>"
+          "unsafeHTML": "<div class=\"hero\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture><h1></h1></div></div></div>",
+          "fields": [
+            {
+              "image": "div:nth-child(1)>div:nth-child(1)>picture>img[src]",
+              "imageAlt": "div:nth-child(1)>div:nth-child(1)>picture>img[alt]",
+              "text": "div:nth-child(1)>div:nth-child(1)>h1"
+            }
+          ]
         }
       }
     }
@@ -18,20 +25,20 @@
         {
           "component": "reference",
           "valueType": "string",
-          "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
+          "name": "image",
           "label": "Image",
           "multi": false
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]",
+          "name": "imageAlt",
           "label": "Alt",
           "value": ""
         },
         {
           "component": "text",
-          "name": "div:nth-child(1)>div:nth-child(1)>h1:nth-child(2)",
+          "name": "text",
           "value": "",
           "label": "Text",
           "valueType": "string"

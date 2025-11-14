@@ -9,7 +9,13 @@
         "da": {
           "name": "accordion",
           "rows": 1,
-          "columns": 2
+          "columns": 2,
+          "fields": [
+            {
+              "summary": "div:nth-child(1)",
+              "text": "div:nth-child(2)"
+            }
+          ]
         }
       }
     },
@@ -33,14 +39,14 @@
         {
           "component": "richtext",
           "valueType": "string",
-          "name": "div:nth-child(1)",
+          "name": "summary",
           "value": "",
           "label": "Summary",
           "required": true
         },
         {
           "component": "richtext",
-          "name": "div:nth-child(2)",
+          "name": "text",
           "value": "",
           "label": "Text",
           "valueType": "string",

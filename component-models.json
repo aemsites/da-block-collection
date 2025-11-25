@@ -30,6 +30,12 @@
     "fields": [
       {
         "component": "reference",
+        "name": "image",
+        "hidden": true,
+        "multi": false
+      },
+      {
+        "component": "reference",
         "name": "img:nth-child(3)[src]",
         "label": "Image",
         "multi": false
@@ -125,6 +131,22 @@
         "name": "div:nth-child(2)",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "columns",
+    "fields": [
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "columns",
+        "label": "Number of Columns",
+        "value": 2,
+        "validation": {
+          "numberMin": 1,
+          "numberMax": 6
+        }
       }
     ]
   },

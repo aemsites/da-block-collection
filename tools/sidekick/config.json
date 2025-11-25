@@ -1,42 +1,5 @@
 {
   "project": "DA Block Collection",
   "editUrlLabel": "Document Authoring",
-  "editUrlPattern": "https://da.live/edit#/{{org}}/{{site}}{{pathname}}",
-  "plugins": [
-    {
-      "id": "da-plugin-demo",
-      "title": "Plugin demo",
-      "environments": ["edit"],
-      "daLibrary": true,
-      "url": "https://main--da-block-collection--aemsites.hlx.live/tools/demo/demo.html"
-    },
-    {
-      "id": "experimentation",
-      "titleI18n": { "en": "Experimentation" },
-      "environments": [ "dev", "preview" ],
-      "event": "experimentation"
-    },
-    {
-      "id": "aem-labs",
-      "title": "AEM Labs",
-      "environments": ["edit"],
-      "daLibrary": true,
-      "experience": "window",
-      "url": "https://labs.aem.live",
-      "icon": "https://main--da-block-collection--aemsites.aem.live/media/media_16e7a2074aac8a0f09c8c495ea7acb5fbc0adade4.png"
-    }
-  ],
-  "apps": [
-    {
-      "title": "App demo",
-      "description": "This is a sample app using the DA SDK.",
-      "url": "https://da.live/app/aemsites/da-block-collection/tools/demo-app"
-    },
-    {
-      "title": "Tag browser",
-      "image": "https://main--da-block-collection--aemsites.hlx.page/media_1061934561e8a4f01907e616a0ce0e4b74d63b92e.jpeg",
-      "description": "Manage your tags",
-      "url": "https://da.live/app/aemsites/da-block-collection/tools/tags"
-    }
-  ]
+  "editUrlPattern": "https://da.live/edit#/{{org}}/{{site}}{{pathname}}"
 }

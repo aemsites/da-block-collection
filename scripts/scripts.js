@@ -224,13 +224,21 @@ const branch = searchParams.get('nx') || 'main';
 
 export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'http://localhost:6456/nx' : 'https://da.live/nx';
 
-(async function loadDa() {
-  /* eslint-disable import/no-unresolved */
-  if (searchParams.get('dapreview')) {
-    import('https://da.live/scripts/dapreview.js')
-      .then(({ default: daPreview }) => daPreview(loadPage));
+(function da() {
+  const { searchParams } = new URL(window.location.href);
+  const ref = searchParams.get('dapreview');
+  const exp = searchParams.get('daexperiment');
+  if (ref) {
+    let origin = 'https://da.live';
+    if (ref !== 'on') {
+      if (ref === 'local') origin = 'http://localhost:3000';
+      if (ref !== 'on') origin = `https://${ref}--da-live--adobe.aem.live`;
+    }
+    import(`${origin}/scripts/dapreview.js`).then((mod) => mod.default(loadPage));
   }
-  if (searchParams.get('daexperiment')) {
-    import(`${NX_ORIGIN}/public/plugins/exp/exp.js`);
+  if (exp) {
+    if (searchParams.get('daexperiment')) {
+      import(`${NX_ORIGIN}/public/plugins/exp/exp.js`);
+    }
   }
 }());

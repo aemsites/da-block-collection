@@ -213,32 +213,19 @@ async function loadPage() {
 
 // UE Editor support before page load
 if (window.location.hostname.includes('ue.da.live')) {
-  // eslint-disable-next-line import/no-unresolved
   await import(`${window.hlx.codeBasePath}/ue/scripts/ue.js`).then(({ default: ue }) => ue());
 }
 
 loadPage();
 
-const { searchParams, origin } = new URL(window.location.href);
-const branch = searchParams.get('nx') || 'main';
-
-export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'http://localhost:6456/nx' : 'https://da.live/nx';
-
 (function da() {
   const { searchParams } = new URL(window.location.href);
-  const ref = searchParams.get('dapreview');
+
+  const lp = searchParams.get('dapreview');
+  // eslint-disable-next-line import/no-unresolved
+  if (lp) import('https://da.live/scripts/dapreview.js').then((mod) => mod.default(loadPage));
+
   const exp = searchParams.get('daexperiment');
-  if (ref) {
-    let origin = 'https://da.live';
-    if (ref !== 'on') {
-      if (ref === 'local') origin = 'http://localhost:3000';
-      if (ref !== 'on') origin = `https://${ref}--da-live--adobe.aem.live`;
-    }
-    import(`${origin}/scripts/dapreview.js`).then((mod) => mod.default(loadPage));
-  }
-  if (exp) {
-    if (searchParams.get('daexperiment')) {
-      import(`${NX_ORIGIN}/public/plugins/exp/exp.js`);
-    }
-  }
+  // eslint-disable-next-line import/no-unresolved
+  if (exp) import('https://da.live/nx/public/plugins/exp/exp.js');
 }());

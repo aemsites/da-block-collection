@@ -145,6 +145,28 @@ const setupUEEventHandlers = () => {
       }
     }
   });
+
+  document.addEventListener('aue:content-move', (event) => {
+    const { from, component } = event.detail;
+    if (from === 'urn:ab:main' && component.startsWith('urn:ab:section')) {
+      const mainEl = document.querySelector('main[data-aue-resource="urn:ab:main"]');
+      if (mainEl) {
+        const sectionEls = mainEl.children;
+        [...sectionEls].forEach((sectionEl, sIndex) => {
+          sectionEl.setAttribute('data-aue-resource', `urn:ab:section-${sIndex}`);
+
+          const attributedEls = sectionEl.querySelectorAll('[data-aue-resource]');
+          [...attributedEls].forEach((attributedEl) => {
+            const currentAueResource = attributedEl.getAttribute('data-aue-resource');
+            const updatedResource = currentAueResource.replace(/urn:ab:section-\d+/, `urn:ab:section-${sIndex}`);
+            attributedEl.setAttribute('data-aue-resource', updatedResource);
+          });
+        });
+      }
+    } else if (from.startsWith('urn:ab:section')) {
+      window.location.reload();
+    }
+  });
 };
 
 export default () => {

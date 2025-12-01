@@ -58,17 +58,7 @@
             "da": {
               "name": "accordion",
               "rows": 1,
-              "columns": 2,
-              "fields": [
-                {
-                  "name": "summary",
-                  "selector": "div:nth-child(1)"
-                },
-                {
-                  "name": "text",
-                  "selector": "div:nth-child(2)"
-                }
-              ]
+              "columns": 2
             }
           }
         },
@@ -80,7 +70,17 @@
             "da": {
               "name": "accordion-item",
               "rows": 2,
-              "columns": 0
+              "columns": 0,
+              "fields": [
+                {
+                  "name": "summary",
+                  "selector": "div:nth-child(1)"
+                },
+                {
+                  "name": "text",
+                  "selector": "div:nth-child(2)"
+                }
+              ]
             }
           }
         },
@@ -105,11 +105,11 @@
               "fields": [
                 {
                   "name": "image",
-                  "selector": "div:nth-child(1)>picture:nth-child(1)>img[src]"
+                  "selector": "div:nth-child(1)>picture>img[src]"
                 },
                 {
                   "name": "imageAlt",
-                  "selector": "div:nth-child(1)>picture:nth-child(1)>img[alt]"
+                  "selector": "div:nth-child(1)>picture>img[alt]"
                 },
                 {
                   "name": "text",
@@ -140,11 +140,11 @@
               "fields": [
                 {
                   "name": "backgroundImage",
-                  "selector": "div:nth-child(1)>picture:nth-child(1)>img[src]"
+                  "selector": "div:nth-child(1)>picture>img[src]"
                 },
                 {
                   "name": "backgroundImageAlt",
-                  "selector": "div:nth-child(1)>picture:nth-child(1)>img[alt]"
+                  "selector": "div:nth-child(1)>picture>img[alt]"
                 },
                 {
                   "name": "text",
@@ -202,11 +202,11 @@
               "fields": [
                 {
                   "name": "url",
-                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)[href]"
+                  "selector": "div>div>p>a[href]"
                 },
                 {
                   "name": "urlText",
-                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)"
+                  "selector": "div>div>p>a"
                 }
               ]
             }
@@ -252,7 +252,7 @@
                 },
                 {
                   "name": "author",
-                  "selector": "div:nth-child(2)>div>p"
+                  "selector": "div:nth-child(2)>div"
                 }
               ]
             }
@@ -270,11 +270,11 @@
               "fields": [
                 {
                   "name": "searchUrl",
-                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a[href]"
+                  "selector": "div>div>p>a[href]"
                 },
                 {
                   "name": "searchUrlText",
-                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a"
+                  "selector": "div>div>p>a"
                 }
               ]
             }
@@ -287,7 +287,8 @@
           "filter": "tabs",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div class=\"tabs\"><div><div><p></p></div><div></div></div></div>"
+              "columns": 1,
+              "rows": 2
             }
           }
         },
@@ -297,11 +298,12 @@
           "model": "tabs-item",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div><div><p></p></div><div></div></div>",
+              "columns": 0,
+              "rows": 2,
               "fields": [
                 {
                   "name": "name",
-                  "selector": "div:nth-child(1)>p"
+                  "selector": "div:nth-child(1)"
                 },
                 {
                   "name": "content",
@@ -323,15 +325,15 @@
               "fields": [
                 {
                   "name": "videoUrl",
-                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a[href]"
+                  "selector": "div>div>p>a[href]"
                 },
                 {
                   "name": "videoUrlText",
-                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a"
+                  "selector": "div>div>p>a"
                 },
                 {
                   "name": "posterImage",
-                  "selector": "div:nth-child(1)>div:nth-child(1)>picture>img[src]"
+                  "selector": "div>div>picture>img[src]"
                 }
               ]
             }

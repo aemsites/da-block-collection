@@ -10,8 +10,8 @@
           "rows": 1,
           "columns": 1,
           "fields": [
-            { "name": "searchUrl", "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a[href]"},
-            { "name": "searchUrlText", "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a"}
+            { "name": "searchUrl", "selector": "div>div>p>a[href]"},
+            { "name": "searchUrlText", "selector": "div>div>p>a"}
           ]
         }
       }

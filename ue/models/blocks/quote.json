@@ -11,7 +11,7 @@
           "columns": 1,
           "fields": [
             { "name": "quote", "selector": "div:nth-child(1)>div"},
-            { "name": "author", "selector": "div:nth-child(2)>div>p"}
+            { "name": "author", "selector": "div:nth-child(2)>div"}
           ]
         }
       }

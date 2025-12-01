@@ -8,8 +8,8 @@
         "da": {
           "unsafeHTML": "<div class=\"fragment\"><div><div><p><a href=\"\">Fragment URL</a></p></div></div></div>",
           "fields": [
-            { "name": "url", "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)[href]"},
-            { "name": "urlText", "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)"}
+            { "name": "url", "selector": "div>div>p>a[href]"},
+            { "name": "urlText", "selector": "div>div>p>a"}
           ]
         }
       }

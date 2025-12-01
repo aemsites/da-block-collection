@@ -222,15 +222,15 @@
               "fields": [
                 {
                   "name": "image",
-                  "selector": "div:nth-child(1)>div:nth-child(1)>picture>img[src]"
+                  "selector": "div>div>picture>img[src]"
                 },
                 {
                   "name": "imageAlt",
-                  "selector": "div:nth-child(1)>div:nth-child(1)>picture>img[alt]"
+                  "selector": "div>div>picture>img[alt]"
                 },
                 {
                   "name": "text",
-                  "selector": "div:nth-child(1)>div:nth-child(1)>h1"
+                  "selector": "div>div>h1"
                 }
               ]
             }

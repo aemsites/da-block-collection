@@ -19,12 +19,6 @@
         {
           "component": "reference",
           "name": "image",
-          "hidden": true,
-          "multi": false
-        },
-        {
-          "component": "reference",
-          "name": "img[src]",
           "label": "Image",
           "multi": false
         },

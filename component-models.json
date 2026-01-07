@@ -36,7 +36,7 @@
       },
       {
         "component": "text",
-        "name": "img[alt]",
+        "name": "imageAlt",
         "label": "Alt Text"
       }
     ]

@@ -58,7 +58,7 @@ const setupObservers = () => {
             }
             break;
           case 'carousel':
-            if (removedElements.length === 1 && removedElements[0].attributes['data-aue-model']?.value === 'carousel-item') {
+            if (removedElements.length === 1 && removedElements[0].attributes['data-aue-component']?.value === 'carousel-item') {
               const resourceAttr = removedElements[0].getAttribute('data-aue-resource');
               if (resourceAttr) {
                 const itemMatch = resourceAttr.match(/item-(\d+)/);
@@ -111,7 +111,7 @@ const setupUEEventHandlers = () => {
       }
       const blockEl = element.parentElement?.closest('.block[data-aue-resource]') || element?.closest('.block[data-aue-resource]');
       if (blockEl) {
-        const block = blockEl.getAttribute('data-aue-model');
+        const block = blockEl.getAttribute('data-aue-component');
         const index = element.getAttribute('data-slide-index');
 
         switch (block) {

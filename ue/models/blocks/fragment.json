@@ -21,14 +21,14 @@
       "fields": [
         {
           "component": "text",
-          "name": "url",
-          "label": "Fragment URL",
-          "required": true
+          "name": "urlText",
+          "label": "Fragment URL Text"
         },
         {
           "component": "text",
-          "name": "urlText",
-          "label": "Fragment URL Text"
+          "name": "url",
+          "label": "Fragment URL",
+          "required": true
         }
       ]
     }

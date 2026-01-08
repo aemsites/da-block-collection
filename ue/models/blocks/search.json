@@ -23,16 +23,16 @@
       "fields": [
         {
           "component": "text",
+          "name": "searchUrlText",
+          "label": "Search URL Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
           "valueType": "string",
           "name": "searchUrl",
           "label": "Search URL",
           "required": true
-        },
-        {
-          "component": "text",
-          "name": "searchUrlText",
-          "label": "Search URL Text",
-          "valueType": "string"
         }
       ]
     }

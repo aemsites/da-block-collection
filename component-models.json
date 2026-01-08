@@ -31,18 +31,12 @@
       {
         "component": "reference",
         "name": "image",
-        "hidden": true,
-        "multi": false
-      },
-      {
-        "component": "reference",
-        "name": "img:nth-child(3)[src]",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text",
-        "name": "img:nth-child(3)[alt]",
+        "name": "imageAlt",
         "label": "Alt Text"
       }
     ]
@@ -155,14 +149,14 @@
     "fields": [
       {
         "component": "text",
-        "name": "url",
-        "label": "Fragment URL",
-        "required": true
+        "name": "urlText",
+        "label": "Fragment URL Text"
       },
       {
         "component": "text",
-        "name": "urlText",
-        "label": "Fragment URL Text"
+        "name": "url",
+        "label": "Fragment URL",
+        "required": true
       }
     ]
   },
@@ -215,16 +209,16 @@
     "fields": [
       {
         "component": "text",
+        "name": "searchUrlText",
+        "label": "Search URL Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
         "valueType": "string",
         "name": "searchUrl",
         "label": "Search URL",
         "required": true
-      },
-      {
-        "component": "text",
-        "name": "searchUrlText",
-        "label": "Search URL Text",
-        "valueType": "string"
       }
     ]
   },

@@ -7,7 +7,8 @@
       "filter": "cards",
       "plugins": {
         "da": {
-          "unsafeHTML": "<div class=\"cards\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div></div>"
+          "rows": 1,
+          "columns": 2
         }
       }
     },
@@ -17,7 +18,8 @@
       "model": "card",
       "plugins": {
         "da": {
-          "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>",
+          "rows": 1,
+          "columns": 2,
           "fields": [
             { "name": "image", "selector": "div:nth-child(1)>picture>img[src]"},
             { "name": "imageAlt", "selector": "div:nth-child(1)>picture>img[alt]"},

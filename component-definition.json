@@ -97,7 +97,8 @@
           "filter": "cards",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div class=\"cards\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div></div>"
+              "rows": 1,
+              "columns": 2
             }
           }
         },
@@ -107,7 +108,8 @@
           "model": "card",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>",
+              "rows": 1,
+              "columns": 2,
               "fields": [
                 {
                   "name": "image",
@@ -132,7 +134,8 @@
           "filter": "carousel",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div class=\"carousel\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>"
+              "rows": 1,
+              "columns": 1
             }
           }
         },
@@ -142,7 +145,8 @@
           "model": "carousel-item",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div>",
+              "rows": 1,
+              "columns": 1,
               "fields": [
                 {
                   "name": "backgroundImage",

@@ -1,0 +1,240 @@
+## Block Definition Migration Prompt
+
+Use this prompt to migrate Universal Editor block definition JSON files from the legacy format to the new format.
+
+---
+
+### Migration Rules
+
+Apply the following transformations to each block definition JSON file:
+
+#### 1. Add explicit `model` and `filter` properties to definitions
+
+For **parent/container definitions** (e.g., `accordion`, `carousel`, `cards`):
+```json
+// ADD these properties at definition level:
+"model": "<definition-id>",
+"filter": "<definition-id>"
+```
+
+For **child/item definitions** (e.g., `accordion-item`, `carousel-item`, `card`):
+```json
+// ADD this property at definition level:
+"model": "<definition-id>"
+```
+
+#### 2. Replace `unsafeHTML` with `rows` and `columns`
+
+If the `plugins.da` object contains `unsafeHTML`, replace it:
+
+```json
+// BEFORE
+"plugins": {
+  "da": {
+    "unsafeHTML": "<div class=\"block-name\">...</div>"
+  }
+}
+
+// AFTER
+"plugins": {
+  "da": {
+    "rows": 1,
+    "columns": <number-of-columns>
+  }
+}
+```
+
+Determine `columns` based on the block's table structure (typically 1 or 2).
+
+#### 3. Add `fields` array to child definitions
+
+For each child/item definition, add a `fields` array inside `plugins.da` that maps semantic field names to CSS selectors:
+
+```json
+// BEFORE (no fields array)
+"plugins": {
+  "da": {
+    "name": "accordion-item",
+    "rows": 2,
+    "columns": 0
+  }
+}
+
+// AFTER (with fields array)
+"plugins": {
+  "da": {
+    "name": "accordion-item",
+    "rows": 2,
+    "columns": 0,
+    "fields": [
+      { "name": "<semantic-name>", "selector": "<css-selector>" },
+      { "name": "<semantic-name>", "selector": "<css-selector>" }
+    ]
+  }
+}
+```
+
+#### 4. Convert model field names from selectors to semantic names
+
+In the `models` array, replace CSS selector-based `name` values with semantic names:
+
+```json
+// BEFORE
+{
+  "component": "richtext",
+  "name": "div:nth-child(1)",
+  "label": "Summary"
+}
+
+// AFTER
+{
+  "component": "richtext",
+  "name": "summary",
+  "label": "Summary"
+}
+```
+
+**Naming convention:** Use camelCase, derived from the `label` value:
+- "Summary" -> `summary`
+- "Background Image" -> `backgroundImage`
+- "Image Alt" -> `imageAlt`
+
+#### 5. Simplify CSS selectors in the `fields` array
+
+When creating selectors for the `fields` array, simplify redundant `:nth-child()` specifiers:
+
+```
+// BEFORE (overly specific)
+div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]
+
+// AFTER (simplified)
+div:nth-child(1)>picture>img[src]
+```
+
+Keep `:nth-child()` only where needed to distinguish between siblings.
+
+---
+
+### Migration Checklist
+
+For each block definition file:
+
+- [ ] Add `model` property to all definitions
+- [ ] Add `filter` property to parent/container definitions
+- [ ] Replace `unsafeHTML` with `rows` and `columns` (if applicable)
+- [ ] Add `fields` array to child/item `plugins.da` sections
+- [ ] Rename model field `name` values from CSS selectors to semantic names
+- [ ] Ensure `fields` array selectors match the original CSS selectors (simplified)
+- [ ] Verify field names in `models` match field names in `plugins.da.fields`
+
+---
+
+### Example: Full Migration
+
+**BEFORE:**
+```json
+{
+  "definitions": [
+    {
+      "title": "Cards",
+      "id": "cards",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div class=\"cards\"><div><div><picture>...</picture></div><div></div></div></div>"
+        }
+      }
+    },
+    {
+      "title": "Card",
+      "id": "card",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div><div><picture>...</picture></div><div></div></div>"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "card",
+      "fields": [
+        {
+          "component": "reference",
+          "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
+          "label": "Image"
+        },
+        {
+          "component": "text",
+          "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]",
+          "label": "Image Alt"
+        },
+        {
+          "component": "richtext",
+          "name": "div:nth-child(2)",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "filters": [...]
+}
+```
+
+**AFTER:**
+```json
+{
+  "definitions": [
+    {
+      "title": "Cards",
+      "id": "cards",
+      "model": "cards",
+      "filter": "cards",
+      "plugins": {
+        "da": {
+          "rows": 1,
+          "columns": 2
+        }
+      }
+    },
+    {
+      "title": "Card",
+      "id": "card",
+      "model": "card",
+      "plugins": {
+        "da": {
+          "rows": 1,
+          "columns": 2,
+          "fields": [
+            { "name": "image", "selector": "div:nth-child(1)>picture>img[src]" },
+            { "name": "imageAlt", "selector": "div:nth-child(1)>picture>img[alt]" },
+            { "name": "text", "selector": "div:nth-child(2)" }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "card",
+      "fields": [
+        {
+          "component": "reference",
+          "name": "image",
+          "label": "Image"
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Image Alt"
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "filters": [...]
+}
+```

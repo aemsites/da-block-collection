@@ -187,6 +187,22 @@
     ]
   },
   {
+    "id": "product-recommendations",
+    "fields": [
+      {
+        "component": "text",
+        "name": "recId",
+        "label": "Rec ID",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "currentSku",
+        "label": "Current SKU"
+      }
+    ]
+  },
+  {
     "id": "quote",
     "fields": [
       {

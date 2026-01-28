@@ -252,7 +252,7 @@
           "model": "product-recommendations",
           "plugins": {
             "da": {
-              "type": "keyvalue-block"
+              "type": "key-value-block"
             }
           }
         },

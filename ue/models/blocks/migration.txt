@@ -4,6 +4,12 @@ Use this prompt to migrate Universal Editor block definition JSON files from the
 
 ---
 
+### Important Notes
+
+**⚠️ Skip Columns Blocks:** Do NOT migrate blocks that contain `"behaviour": "columns"` in their definition. These blocks use a special columns behavior and do not require migration.
+
+---
+
 ### Migration Rules
 
 Apply the following transformations to each block definition JSON file:
@@ -115,10 +121,97 @@ Keep `:nth-child()` only where needed to distinguish between siblings.
 
 ---
 
+### Special Case: Key/Value Blocks
+
+**Identifying Key/Value Blocks:**
+
+Key/value blocks can be identified by the following characteristics:
+- Contains `unsafeHTML` with a **two-column HTML structure**
+- The first column contains key names (e.g., `<div>recid</div>`, `<div>currentSku</div>`)
+- The second column contains value placeholders (e.g., `<div><p>PLACEHOLDER</p></div>`)
+- Model field names (CSS selectors) only address the **second column** cells: `div:nth-child(1)>div:nth-child(2)>p:nth-child(1)`
+
+**Example OLD format:**
+```json
+{
+  "definitions": [{
+    "plugins": {
+      "da": {
+        "unsafeHTML": "<div class=\"product-recommendations\"><div><div>recid</div><div><p>PLACEHOLDER</p></div></div><div><div>currentSku</div><div><p>PLACEHOLDER</p></div></div></div>"
+      }
+    }
+  }],
+  "models": [{
+    "fields": [
+      {
+        "component": "text",
+        "name": "div:nth-child(1)>div:nth-child(2)>p:nth-child(1)",
+        "label": "Rec ID"
+      }
+    ]
+  }]
+}
+```
+
+**Migration Steps for Key/Value Blocks:**
+
+1. **Extract field names from the first column** of the `unsafeHTML` structure
+   - Look at each `<div><div>KEY_NAME</div><div>...</div></div>` pair
+   - Extract KEY_NAME values (e.g., "recid", "currentSku")
+   - Convert to camelCase if needed (e.g., "recid" → "recId")
+
+2. **Remove the entire `unsafeHTML` property**
+
+3. **Replace with simplified DA plugin:**
+   ```json
+   "plugins": {
+     "da": {
+       "type": "key-value-block"
+     }
+   }
+   ```
+
+4. **Update model field names** to use the extracted key names from step 1
+
+5. **Add the `model` property** to the definition (same as regular blocks)
+
+**Example NEW format:**
+```json
+{
+  "definitions": [{
+    "model": "product-recommendations",
+    "plugins": {
+      "da": {
+        "type": "key-value-block"
+      }
+    }
+  }],
+  "models": [{
+    "fields": [
+      {
+        "component": "text",
+        "name": "recId",
+        "label": "Rec ID"
+      },
+      {
+        "component": "text",
+        "name": "currentSku",
+        "label": "Current SKU"
+      }
+    ]
+  }]
+}
+```
+
+---
+
 ### Migration Checklist
 
-For each block definition file:
+**Pre-migration:**
+- [ ] Check if block has `"behaviour": "columns"` → **Skip migration if present**
+- [ ] Identify if block is a **key/value block** (two-column structure with keys in first column)
 
+**For regular blocks:**
 - [ ] Add `model` property to all definitions
 - [ ] Add `filter` property to parent/container definitions
 - [ ] Replace `unsafeHTML` with `rows` and `columns` (if applicable)
@@ -126,6 +219,13 @@ For each block definition file:
 - [ ] Rename model field `name` values from CSS selectors to semantic names
 - [ ] Ensure `fields` array selectors match the original CSS selectors (simplified)
 - [ ] Verify field names in `models` match field names in `plugins.da.fields`
+
+**For key/value blocks:**
+- [ ] Extract key names from first column of `unsafeHTML`
+- [ ] Remove `unsafeHTML` entirely
+- [ ] Replace with `"type": "key-value-block"` in DA plugin
+- [ ] Update model field names to extracted key names (camelCase)
+- [ ] Add `model` property to definition
 
 ---
 

@@ -25,6 +25,18 @@
             "component": "text",
             "name": "currentSku",
             "label": "Current SKU"
+          },
+          {
+            "component": "boolean",
+            "name": "details-button",
+            "label": "Show Details Button",
+            "valueType": "boolean"
+          },
+          {
+            "component": "number",
+            "name": "cart-items",
+            "label": "Number of Cart Items",
+            "valueType": "number"
           }
         ]
       }

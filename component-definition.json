@@ -247,16 +247,6 @@
           }
         },
         {
-          "title": "Product Recommendations",
-          "id": "product-recommendations",
-          "model": "product-recommendations",
-          "plugins": {
-            "da": {
-              "type": "key-value-block"
-            }
-          }
-        },
-        {
           "title": "Quote",
           "id": "quote",
           "model": "quote",

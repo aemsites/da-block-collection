@@ -219,18 +219,14 @@ if (/\.(stage-ue|ue)\.da\.live$/.test(window.location.hostname)) {
 
 loadPage();
 
-const { searchParams, origin } = new URL(window.location.href);
-const branch = searchParams.get('nx') || 'main';
+(function da() {
+  const { searchParams } = new URL(window.location.href);
 
-export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'http://localhost:6456/nx' : 'https://da.live/nx';
+  const lp = searchParams.get('dapreview');
+  // eslint-disable-next-line import/no-unresolved
+  if (lp) import('https://da.live/scripts/dapreview.js').then((mod) => mod.default(loadPage));
 
-(async function loadDa() {
-  /* eslint-disable import/no-unresolved */
-  if (searchParams.get('dapreview')) {
-    import('https://da.live/scripts/dapreview.js')
-      .then(({ default: daPreview }) => daPreview(loadPage));
-  }
-  if (searchParams.get('daexperiment')) {
-    import(`${NX_ORIGIN}/public/plugins/exp/exp.js`);
-  }
+  const exp = searchParams.get('daexperiment');
+  // eslint-disable-next-line import/no-unresolved
+  if (exp) import('https://da.live/nx/public/plugins/exp/exp.js');
 }());

@@ -3,11 +3,16 @@
     {
       "title": "Search",
       "id": "search",
+      "model": "search",
       "plugins": {
         "da": {
           "name": "search",
           "rows": 1,
-          "columns": 1
+          "columns": 1,
+          "fields": [
+            { "name": "searchUrl", "selector": "div>div>p>a[href]"},
+            { "name": "searchUrlText", "selector": "div>div>p>a"}
+          ]
         }
       }
     }
@@ -18,16 +23,16 @@
       "fields": [
         {
           "component": "text",
-          "valueType": "string",
-          "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)[href]",
-          "label": "Search URL",
-          "required": true
+          "name": "searchUrlText",
+          "label": "Search URL Text",
+          "valueType": "string"
         },
         {
           "component": "text",
-          "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)",
-          "label": "Search URL Text",
-          "valueType": "string"
+          "valueType": "string",
+          "name": "searchUrl",
+          "label": "Search URL",
+          "required": true
         }
       ]
     }

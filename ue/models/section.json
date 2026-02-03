@@ -48,7 +48,8 @@
         "tabs",
         "table",
         "text",
-        "video"
+        "video",
+        "product-recommendations"
       ]
     }
   ]

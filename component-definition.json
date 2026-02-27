@@ -25,8 +25,12 @@
               "type": "image",
               "fields": [
                 {
+                  "name": "image",
+                  "selector": "picture>img[src]"
+                },
+                {
                   "name": "imageAlt",
-                  "selector": "img[alt]"
+                  "selector": "picture>img[alt]"
                 }
               ]
             }

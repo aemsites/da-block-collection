@@ -53,6 +53,27 @@
             "numberMin": 1,
             "numberMax": 6
           }
+        },
+        {
+          "component": "select",
+          "name": "classes",
+          "value": "default",
+          "label": "2 Columns Layout variants",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "33 / 66 Split",
+              "value": "col-33-66"
+            },
+            {
+              "name": "66 / 33 Split",
+              "value": "col-66-33"
+            }
+          ]
         }
       ]
     }

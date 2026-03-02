@@ -26,7 +26,8 @@
           "component": "reference",
           "name": "image",
           "label": "Image",
-          "multi": false
+          "multi": false,
+          "valueType": "string"
         },
         {
           "component": "text",

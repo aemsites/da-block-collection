@@ -86,21 +86,20 @@ const setupObservers = () => {
 };
 
 const setupUEEventHandlers = () => {
-  // For each img source change, update the srcsets of the parent picture sources
-  document.addEventListener('aue:content-patch', (event) => {
-    if (event.detail.patch.name.match(/img.*\[src\]/)) {
-      const newImgSrc = event.detail.patch.value;
-      const picture = event.srcElement.querySelector('picture');
+  // For each picture or img element change, update the srcsets of the picture element sources
+  document.body.addEventListener('aue:content-patch', ({ detail: { patch, request } }) => {
+    if (!/image/.test(patch.name)) return;
 
-      if (picture) {
-        picture.querySelectorAll('source').forEach((source) => {
-          source.setAttribute('srcset', newImgSrc);
-        });
-      }
-    }
+    let element = document.querySelector(`[data-aue-resource="${request.target.resource}"]`);
+    if (element && element.getAttribute('data-aue-prop') !== patch.name) element = element.querySelector(`[data-aue-prop='${patch.name}']`);
+    if (element?.getAttribute('data-aue-type') !== 'media') return;
+
+    (element.tagName === 'IMG' ? element.closest('picture') : element)
+      ?.querySelectorAll('source')
+      .forEach((source) => source.setAttribute('srcset', patch.value));
   });
 
-  document.addEventListener('aue:ui-select', (event) => {
+  document.body.addEventListener('aue:ui-select', (event) => {
     const { detail } = event;
     const resource = detail?.resource;
 

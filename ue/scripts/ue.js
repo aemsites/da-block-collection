@@ -87,7 +87,7 @@ const setupObservers = () => {
 
 const setupUEEventHandlers = () => {
   // For each picture or img element change, update the srcsets of the picture element sources
-  document.addEventListener('aue:content-patch', (event) => {
+  document.body.addEventListener('aue:content-patch', (event) => {
     if (event.detail.patch.name.match('image')) {
       const { patch, request } = event.detail;
       let element = document.querySelector(`[data-aue-resource="${request.target.resource}"]`);
@@ -107,7 +107,7 @@ const setupUEEventHandlers = () => {
     }
   });
 
-  document.addEventListener('aue:ui-select', (event) => {
+  document.body.addEventListener('aue:ui-select', (event) => {
     const { detail } = event;
     const resource = detail?.resource;
 

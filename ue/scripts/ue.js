@@ -88,15 +88,13 @@ const setupObservers = () => {
 const setupUEEventHandlers = () => {
   // For each picture or img element change, update the srcsets of the picture element sources
   document.body.addEventListener('aue:content-patch', ({ detail: { patch, request } }) => {
-    if (!/image/.test(patch.name)) return;
-
     let element = document.querySelector(`[data-aue-resource="${request.target.resource}"]`);
     if (element && element.getAttribute('data-aue-prop') !== patch.name) element = element.querySelector(`[data-aue-prop='${patch.name}']`);
     if (element?.getAttribute('data-aue-type') !== 'media') return;
 
-    (element.tagName === 'IMG' ? element.closest('picture') : element)
-      ?.querySelectorAll('source')
-      .forEach((source) => source.setAttribute('srcset', patch.value));
+    const picture = element.tagName === 'IMG' ? element.closest('picture') : element;
+    picture?.querySelectorAll('source').forEach((source) => source.remove());
+    picture?.querySelector('img')?.removeAttribute('srcset');
   });
 
   document.body.addEventListener('aue:ui-select', (event) => {

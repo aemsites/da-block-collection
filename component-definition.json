@@ -291,6 +291,19 @@
           }
         },
         {
+          "title": "Table",
+          "id": "table",
+          "model": "table",
+          "filter": "table",
+          "plugins": {
+            "da": {
+              "name": "table",
+              "rows": 1,
+              "columns": 1
+            }
+          }
+        },
+        {
           "title": "Tabs",
           "id": "tabs",
           "model": "tabs",

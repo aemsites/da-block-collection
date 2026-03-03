@@ -1,0 +1,46 @@
+{
+  "definitions": [
+    {
+      "title": "Table",
+      "id": "table",
+      "model": "table",
+      "filter": "table",
+      "plugins": {
+        "da": {
+          "name": "table",
+          "rows": 1,
+          "columns": 1
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "table",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "table",
+          "label": "Table",
+          "valueType": "string",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "table",
+      "rte": {
+        "toolbar": {
+          "insert": [
+            "table"
+          ],
+          "sections": [
+            "insert"
+          ]
+        }
+      }
+    }
+  ]
+}

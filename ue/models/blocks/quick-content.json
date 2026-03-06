@@ -13,7 +13,7 @@
           "fields": [
             {
               "name": "image",
-              "selector": "div:nth-child(1)>picture>img[src]"
+              "selector": "div:nth-child(1)>div>picture>img[src]"
             },
             {
               "name": "altText",

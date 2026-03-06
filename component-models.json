@@ -32,7 +32,8 @@
         "component": "reference",
         "name": "image",
         "label": "Image",
-        "multi": false
+        "multi": false,
+        "valueType": "string"
       },
       {
         "component": "text",
@@ -141,6 +142,27 @@
           "numberMin": 1,
           "numberMax": 6
         }
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "default",
+        "label": "2 Columns Layout variants",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "33 / 66 Split",
+            "value": "col-33-66"
+          },
+          {
+            "name": "66 / 33 Split",
+            "value": "col-66-33"
+          }
+        ]
       }
     ]
   },
@@ -183,6 +205,85 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "quick-content",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "altText",
+        "label": "Image Alt Text",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "headline",
+        "label": "Headline",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Main Text",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "Button Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaUrl",
+        "label": "Button Link (URL)",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "ctaType",
+        "label": "Button Type",
+        "value": "primary",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Layout alignment",
+        "value": "",
+        "options": [
+          {
+            "name": "Left",
+            "value": ""
+          },
+          {
+            "name": "Right",
+            "value": "media-right"
+          }
+        ]
       }
     ]
   },

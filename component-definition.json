@@ -251,6 +251,49 @@
           }
         },
         {
+          "title": "Quick Content",
+          "id": "quick-content",
+          "model": "quick-content",
+          "filter": "quick-content",
+          "plugins": {
+            "da": {
+              "name": "quick-content",
+              "rows": 7,
+              "columns": 1,
+              "fields": [
+                {
+                  "name": "image",
+                  "selector": "div:nth-child(1)>div>picture>img[src]"
+                },
+                {
+                  "name": "altText",
+                  "selector": "div:nth-child(2)>div>p"
+                },
+                {
+                  "name": "headline",
+                  "selector": "div:nth-child(3)>div>p"
+                },
+                {
+                  "name": "description",
+                  "selector": "div:nth-child(4)>div"
+                },
+                {
+                  "name": "ctaText",
+                  "selector": "div:nth-child(5)>div>p"
+                },
+                {
+                  "name": "ctaUrl",
+                  "selector": "div:nth-child(6)>div>p"
+                },
+                {
+                  "name": "ctaType",
+                  "selector": "div:nth-child(7)>div>p"
+                }
+              ]
+            }
+          }
+        },
+        {
           "title": "Quote",
           "id": "quote",
           "model": "quote",

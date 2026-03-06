@@ -250,6 +250,7 @@
           "title": "Quick Content",
           "id": "quick-content",
           "model": "quick-content",
+          "filter": "quick-content",
           "plugins": {
             "da": {
               "name": "quick-content",

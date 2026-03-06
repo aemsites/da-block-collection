@@ -215,25 +215,29 @@
         "component": "reference",
         "name": "image",
         "label": "Image",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text",
         "name": "altText",
         "label": "Image Alt Text",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text",
         "name": "headline",
         "label": "Headline",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "richtext",
         "name": "description",
         "label": "Main Text",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text",

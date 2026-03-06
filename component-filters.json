@@ -63,6 +63,31 @@
     ]
   },
   {
+    "id": "quick-content",
+    "rte": {
+      "toolbar": {
+        "format": [
+          "bold",
+          "italic"
+        ],
+        "blocks": [
+          "paragraph",
+          "h3"
+        ],
+        "list": [
+          "bullet_list",
+          "ordered_list"
+        ],
+        "editor": [
+          "removeformat"
+        ]
+      }
+    },
+    "components": [
+      "richtext"
+    ]
+  },
+  {
     "id": "tabs",
     "components": [
       "tabs-item"

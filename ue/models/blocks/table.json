@@ -7,6 +7,9 @@
       "filter": "table",
       "plugins": {
         "da": {
+          "name": "table",
+          "rows": 1,
+          "columns": 1,
           "fields": [
             {
               "name": "table",

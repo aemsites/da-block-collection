@@ -223,6 +223,17 @@
     ]
   },
   {
+    "id": "table",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "table",
+        "value": "",
+        "label": "Table Content"
+      }
+    ]
+  },
+  {
     "id": "tabs-item",
     "fields": [
       {

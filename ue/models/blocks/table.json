@@ -1,0 +1,33 @@
+{
+  "definitions": [
+    {
+      "title": "Table",
+      "id": "table",
+      "model": "table",
+      "plugins": {
+        "da": {
+          "fields": [
+            {
+              "name": "table",
+              "selector": "div>div"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "table",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "table",
+          "value": "",
+          "label": "Table Content"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

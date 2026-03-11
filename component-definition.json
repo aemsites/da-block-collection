@@ -295,6 +295,21 @@
           }
         },
         {
+          "title": "Table",
+          "id": "table",
+          "model": "table",
+          "plugins": {
+            "da": {
+              "fields": [
+                {
+                  "name": "table",
+                  "selector": "div>div"
+                }
+              ]
+            }
+          }
+        },
+        {
           "title": "Tabs",
           "id": "tabs",
           "model": "tabs",

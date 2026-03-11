@@ -4,6 +4,7 @@
       "title": "Table",
       "id": "table",
       "model": "table",
+      "filter": "table",
       "plugins": {
         "da": {
           "fields": [
@@ -29,5 +30,19 @@
       ]
     }
   ],
-  "filters": []
+  "filters": [
+    {
+      "id": "table",
+      "rte": {
+        "toolbar": {
+          "insert": [
+            "table"
+          ],
+          "sections": [
+            "insert"
+          ]
+        }
+      }
+    }
+  ]
 }

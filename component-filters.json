@@ -62,6 +62,19 @@
     ]
   },
   {
+    "id": "table",
+    "rte": {
+      "toolbar": {
+        "insert": [
+          "table"
+        ],
+        "sections": [
+          "insert"
+        ]
+      }
+    }
+  },
+  {
     "id": "tabs",
     "components": [
       "tabs-item"

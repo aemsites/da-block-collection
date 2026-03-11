@@ -298,6 +298,7 @@
           "title": "Table",
           "id": "table",
           "model": "table",
+          "filter": "table",
           "plugins": {
             "da": {
               "fields": [

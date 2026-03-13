@@ -55,23 +55,39 @@
           }
         },
         {
-          "component": "select",
+          "component": "multiselect",
           "name": "classes",
-          "value": "default",
-          "label": "2 Columns Layout variants",
-          "valueType": "string",
+          "value": [],
+          "label": "Block options",
+          "valueType": "array",
           "options": [
             {
-              "name": "Default",
-              "value": "default"
+              "name": "Stacked",
+              "value": "stack"
             },
             {
-              "name": "33 / 66 Split",
-              "value": "col-33-66"
+              "name": "Size medium (540px)",
+              "value": "size-md"
             },
             {
-              "name": "66 / 33 Split",
-              "value": "col-66-33"
+              "name": "Size small (420px)",
+              "value": "size-sm"
+            },
+            {
+              "name": "Gap small",
+              "value": "gap-sm"
+            },
+            {
+              "name": "Gap medium",
+              "value": "gap-md"
+            },
+            {
+              "name": "Gap large",
+              "value": "gap-lg"
+            },
+            {
+              "name": "Overlap",
+              "value": "overlap"
             }
           ]
         }

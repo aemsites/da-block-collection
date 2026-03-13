@@ -12,6 +12,10 @@
             {
               "name": "imageAlt",
               "selector": "img[alt]"
+            },
+            {
+              "name": "image",
+              "selector": "img[src]"
             }
           ]
         }

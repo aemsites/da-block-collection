@@ -25,6 +25,10 @@
               "type": "image",
               "fields": [
                 {
+                  "name": "image",
+                  "selector": "img[src]"
+                },
+                {
                   "name": "imageAlt",
                   "selector": "img[alt]"
                 },
@@ -332,6 +336,25 @@
                 {
                   "name": "searchUrlText",
                   "selector": "div>div>p>a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Table",
+          "id": "table",
+          "model": "table",
+          "filter": "table",
+          "plugins": {
+            "da": {
+              "name": "table",
+              "rows": 1,
+              "columns": 1,
+              "fields": [
+                {
+                  "name": "table",
+                  "selector": "div>div"
                 }
               ]
             }

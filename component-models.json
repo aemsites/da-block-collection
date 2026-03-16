@@ -65,14 +65,14 @@
         "component": "richtext",
         "valueType": "string",
         "name": "summary",
-        "value": "",
+        "value": "summary",
         "label": "Summary",
         "required": true
       },
       {
         "component": "richtext",
         "name": "text",
-        "value": "",
+        "value": "text",
         "label": "Text",
         "valueType": "string",
         "required": true
@@ -336,6 +336,17 @@
         "name": "searchUrl",
         "label": "Search URL",
         "required": true
+      }
+    ]
+  },
+  {
+    "id": "table",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "table",
+        "value": "",
+        "label": "Table Content"
       }
     ]
   },

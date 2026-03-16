@@ -44,7 +44,7 @@
           "required": true
         },
         {
-          "component": "richtext",
+          "component": "text",
           "name": "text",
           "value": "text",
           "label": "Text",

@@ -142,6 +142,18 @@ const setupUEEventHandlers = () => {
       }
     }
   });
+
+  document.body.addEventListener('aue:content-add', () => {
+    window.location.reload();
+  });
+
+  document.body.addEventListener('aue:content-move', () => {
+    window.location.reload();
+  });
+
+  document.body.addEventListener('aue:content-remove', () => {
+    window.location.reload();
+  });
 };
 
 export default () => {

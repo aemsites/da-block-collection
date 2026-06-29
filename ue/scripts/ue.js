@@ -144,15 +144,15 @@ const setupUEEventHandlers = () => {
   });
 
   document.body.addEventListener('aue:content-add', () => {
-    window.reload();
+    window.location.reload();
   });
 
   document.body.addEventListener('aue:content-move', () => {
-    window.reload();
+    window.location.reload();
   });
 
   document.body.addEventListener('aue:content-remove', () => {
-    window.reload();
+    window.location.reload();
   });
 };
 

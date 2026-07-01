@@ -24,6 +24,10 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Dark",
+              "value": "dark"
             }
           ]
         }

@@ -497,7 +497,12 @@ function shouldRouteToSubmissionService(actionType) {
 async function setupForm(formDef, { pathname, editMode = false } = {}) {
   const submitProps = formDef?.properties?.['fd:submit'];
   const actionType = submitProps?.actionName || formDef?.properties?.actionType;
-  if (shouldRouteToSubmissionService(actionType)) {
+  if (shouldRouteToSubmissionService(actionType) && submitProps?.configUrl) {
+    // forms authored in documents (DA): the submission service reads the submit configuration
+    // from a published sheet of the site (Submit row plus submit-action-* sheets)
+    const { pathname: sheetPath } = new URL(submitProps.configUrl, window.location.href);
+    formDef.action = SUBMISSION_SERVICE + btoa(sheetPath.endsWith('.json') ? sheetPath : `${sheetPath}.json`);
+  } else if (shouldRouteToSubmissionService(actionType)) {
     // Check if we're in an iframe and use parent window path if available
     const iframePath = window.frameElement ? window.parent.location.pathname
       : window.location.pathname;
@@ -553,7 +558,14 @@ export default async function decorate(block) {
       pathname,
       editMode: block.classList.contains('edit-mode'),
     }));
-    container.replaceWith(form);
+    // In Universal Editor (instrumented block) keep the JSON source in the DOM, hidden:
+    // the form field editing support reads the definition from it.
+    if (block.hasAttribute('data-aue-resource')) {
+      container.hidden = true;
+      container.after(form);
+    } else {
+      container.replaceWith(form);
+    }
   }
   return { form, afbForm };
 }

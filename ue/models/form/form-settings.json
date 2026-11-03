@@ -1,0 +1,75 @@
+{
+  "definitions": [],
+  "models": [
+    {
+      "id": "form-settings",
+      "fields": [
+        {
+          "component": "tab",
+          "name": "basic",
+          "label": "Basic"
+        },
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "tab",
+          "name": "submission",
+          "label": "Submission"
+        },
+        {
+          "component": "select",
+          "name": "properties.fd:submit.actionName",
+          "label": "Submit action",
+          "valueType": "string",
+          "description": "Forms Submission Service uses the submission configuration sheet; a REST endpoint receives submissions at the Submit URL.",
+          "options": [
+            {
+              "name": "Forms Submission Service (spreadsheet)",
+              "value": "spreadsheet"
+            },
+            {
+              "name": "REST endpoint",
+              "value": "rest"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "properties.fd:submit.configUrl",
+          "label": "Submission configuration sheet",
+          "valueType": "string",
+          "description": "Path of a published sheet of this site (e.g. /forms/contact-submit) with a 'default' sheet holding the Submit row (Action pointing to the sheet itself) and submit-action-spreadsheet / submit-action-email sheets."
+        },
+        {
+          "component": "text",
+          "name": "action",
+          "label": "Submit URL",
+          "valueType": "string",
+          "description": "Endpoint that receives the submission when the submit action is REST endpoint."
+        },
+        {
+          "component": "tab",
+          "name": "confirmation",
+          "label": "After submit"
+        },
+        {
+          "component": "richtext",
+          "name": "thankYouMsg",
+          "label": "Thank you message",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "redirectUrl",
+          "label": "Redirect URL",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

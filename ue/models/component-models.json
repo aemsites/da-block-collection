@@ -13,5 +13,8 @@
   },
   {
     "...": "./blocks/*.json#/models"
+  },
+  {
+    "...": "./form/*.json#/models"
   }
 ]

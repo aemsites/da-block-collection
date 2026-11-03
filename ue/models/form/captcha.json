@@ -1,0 +1,68 @@
+{
+  "definitions": [
+    {
+      "title": "Captcha (Invisible)",
+      "id": "captcha",
+      "model": "captcha",
+      "plugins": {
+        "da": {
+          "type": "key-value-block"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "captcha",
+      "fields": [
+        {
+          "component": "text",
+          "name": "name",
+          "label": "Name",
+          "valueType": "string",
+          "required": true
+        },
+        {
+          "component": "text",
+          "name": "label.value",
+          "label": "label.value",
+          "valueType": "string",
+          "value": "Captcha (Invisible)",
+          "condition": {
+            "===": [
+              1,
+              0
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "fieldType",
+          "label": "fieldType",
+          "valueType": "string",
+          "value": "captcha",
+          "condition": {
+            "===": [
+              1,
+              0
+            ]
+          }
+        },
+        {
+          "component": "boolean",
+          "name": "required",
+          "label": "required",
+          "valueType": "boolean",
+          "value": true,
+          "condition": {
+            "===": [
+              1,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

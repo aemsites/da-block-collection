@@ -1,0 +1,124 @@
+[
+  {
+    "block": "form",
+    "filter": "form-fields",
+    "label": "label.value",
+    "root": "form-settings",
+    "component": {
+      "match": [
+        {
+          "when": {
+            "fieldType": "button",
+            "events.click": "/submitForm/"
+          },
+          "component": "form-submit-button"
+        },
+        {
+          "when": {
+            "fieldType": "button",
+            "events.click": "/reset/"
+          },
+          "component": "form-reset-button"
+        }
+      ],
+      "keys": [
+        ":type",
+        "fieldType"
+      ],
+      "aliases": {
+        "text": "text-input",
+        "select": "drop-down",
+        "tel": "telephone-input",
+        "text-area": "multiline-input",
+        "file": "file-input",
+        "date": "date-input",
+        "number": "number-input",
+        "radio": "radio-group",
+        "heading": "plain-text",
+        "button": "form-button",
+        "image": "form-image",
+        "accordion": "form-accordion",
+        "modal": "form-modal"
+      }
+    },
+    "defaults": {
+      "form-accordion": {
+        "items": [
+          {
+            "label": {
+              "value": "Item 1"
+            },
+            "fieldType": "panel"
+          },
+          {
+            "label": {
+              "value": "Item 2"
+            },
+            "fieldType": "panel"
+          }
+        ]
+      },
+      "tnc": {
+        "items": [
+          {
+            "value": "Text related to the terms and conditions come here.",
+            "fieldType": "plain-text",
+            "properties": {
+              "textIsRich": true
+            }
+          },
+          {
+            "enum": [
+              "dummy-link-1"
+            ],
+            "type": "string[]",
+            ":type": "toggleable-link",
+            "properties": {
+              "title": "I agree to the terms & conditions"
+            },
+            "enumNames": [
+              "Privacy policy."
+            ],
+            "fieldType": "checkbox-group",
+            "rules": {
+              "validationStatus": "valid"
+            },
+            "events": {
+              "change": [
+                "if(length($field.$value) == length($field.$enum), dispatchEvent($parent.approvalcheckbox, 'custom:setProperty', {enabled : true()}), {})"
+              ]
+            }
+          },
+          {
+            "name": "approvalcheckbox",
+            "label": {
+              "value": "I agree to the terms & conditions."
+            },
+            "fieldType": "checkbox",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "true"
+            ]
+          }
+        ]
+      },
+      "wizard": {
+        "items": [
+          {
+            "label": {
+              "value": "Item 1"
+            },
+            "fieldType": "panel"
+          },
+          {
+            "label": {
+              "value": "Item 2"
+            },
+            "fieldType": "panel"
+          }
+        ]
+      }
+    }
+  }
+]

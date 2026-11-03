@@ -1,0 +1,255 @@
+{
+  "definitions": [
+    {
+      "title": "File Attachment",
+      "id": "file-input",
+      "model": "file-input",
+      "plugins": {
+        "da": {
+          "type": "key-value-block"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "file-input",
+      "fields": [
+        {
+          "component": "tab",
+          "label": "Basic",
+          "name": "basic"
+        },
+        {
+          "component": "text",
+          "name": "name",
+          "label": "Name",
+          "valueType": "string",
+          "required": true,
+          "valueFormat": "regexp",
+          "validation": {
+            "regExp": "^[^$].*",
+            "customErrorMsg": "Name cannot start with $"
+          }
+        },
+        {
+          "component": "text",
+          "name": "label.value",
+          "label": "Title",
+          "valueType": "string",
+          "value": "File Attachment"
+        },
+        {
+          "component": "boolean",
+          "name": "properties.hideTitle",
+          "label": "Hide title",
+          "valueType": "boolean"
+        },
+        {
+          "component": "text",
+          "name": "dataRef",
+          "label": "Bind reference",
+          "valueType": "string"
+        },
+        {
+          "component": "boolean",
+          "name": "properties.unboundFormElement",
+          "label": "Mark as Unbound Form Element",
+          "valueType": "boolean"
+        },
+        {
+          "component": "boolean",
+          "name": "visible",
+          "label": "Show Component",
+          "valueType": "boolean",
+          "value": true
+        },
+        {
+          "component": "boolean",
+          "name": "enabled",
+          "label": "Enable Component",
+          "valueType": "boolean",
+          "value": true
+        },
+        {
+          "component": "boolean",
+          "name": "readOnly",
+          "label": "Read-only",
+          "valueType": "boolean"
+        },
+        {
+          "component": "select",
+          "name": "properties.colspan",
+          "label": "Column Span",
+          "valueType": "string",
+          "value": "12",
+          "options": [
+            {
+              "name": "1 column",
+              "value": "1"
+            },
+            {
+              "name": "2 column",
+              "value": "2"
+            },
+            {
+              "name": "3 column",
+              "value": "3"
+            },
+            {
+              "name": "4 column",
+              "value": "4"
+            },
+            {
+              "name": "5 column",
+              "value": "5"
+            },
+            {
+              "name": "6 column",
+              "value": "6"
+            },
+            {
+              "name": "7 column",
+              "value": "7"
+            },
+            {
+              "name": "8 column",
+              "value": "8"
+            },
+            {
+              "name": "9 column",
+              "value": "9"
+            },
+            {
+              "name": "10 column",
+              "value": "10"
+            },
+            {
+              "name": "11 column",
+              "value": "11"
+            },
+            {
+              "name": "12 column",
+              "value": "12"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "properties.buttonText",
+          "label": "Button Title",
+          "valueType": "string",
+          "value": "Attach"
+        },
+        {
+          "component": "richtext",
+          "name": "properties.dragDropText",
+          "label": "Drag Drop Text",
+          "valueType": "string",
+          "value": "Drag and Drop To Upload"
+        },
+        {
+          "component": "tab",
+          "label": "Validation",
+          "name": "validation"
+        },
+        {
+          "component": "boolean",
+          "name": "required",
+          "label": "Required",
+          "valueType": "boolean"
+        },
+        {
+          "component": "text",
+          "name": "constraintMessages.required",
+          "label": "Error message",
+          "valueType": "string",
+          "description": "Error message shown when required field is left empty."
+        },
+        {
+          "component": "text",
+          "name": "constraintMessages.validationExpression",
+          "label": "Script validation message",
+          "valueType": "string",
+          "description": "Displayed when validation script fails."
+        },
+        {
+          "component": "number",
+          "name": "maxFileSize",
+          "label": "Maximum file size (MB)",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "constraintMessages.maxFileSize",
+          "label": "Maximum file size error message",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "accept",
+          "label": "Allowed file types",
+          "valueType": "string",
+          "multi": true,
+          "value": [
+            "audio/*",
+            "video/*",
+            "image/*",
+            "text/*",
+            "application/pdf"
+          ]
+        },
+        {
+          "component": "text",
+          "name": "constraintMessages.accept",
+          "label": "File type error message",
+          "valueType": "string"
+        },
+        {
+          "component": "tab",
+          "label": "Help Content",
+          "name": "help"
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "label": "Help text",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "tooltip",
+          "label": "Short description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "fieldType",
+          "label": "fieldType",
+          "valueType": "string",
+          "value": "file-input",
+          "condition": {
+            "===": [
+              1,
+              0
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "type",
+          "label": "type",
+          "valueType": "string",
+          "value": "file",
+          "condition": {
+            "===": [
+              1,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

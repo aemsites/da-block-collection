@@ -12,6 +12,7 @@
 
 import { showSlide } from '../../blocks/carousel/carousel.js';
 import { moveInstrumentation } from './ue-utils.js';
+import setupFormEditing from './form-ue.js';
 
 const setupObservers = () => {
   const mutatingBlocks = document.querySelectorAll('div.cards, div.carousel, div.accordion');
@@ -147,4 +148,5 @@ const setupUEEventHandlers = () => {
 export default () => {
   setupObservers();
   setupUEEventHandlers();
+  setupFormEditing();
 };

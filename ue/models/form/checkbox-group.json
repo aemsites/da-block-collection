@@ -1,0 +1,279 @@
+{
+  "definitions": [
+    {
+      "title": "Checkbox group",
+      "id": "checkbox-group",
+      "model": "checkbox-group",
+      "plugins": {
+        "da": {
+          "type": "key-value-block"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "checkbox-group",
+      "fields": [
+        {
+          "component": "tab",
+          "label": "Basic",
+          "name": "basic"
+        },
+        {
+          "component": "text",
+          "name": "name",
+          "label": "Name",
+          "valueType": "string",
+          "required": true,
+          "valueFormat": "regexp",
+          "validation": {
+            "regExp": "^[^$].*",
+            "customErrorMsg": "Name cannot start with $"
+          }
+        },
+        {
+          "component": "text",
+          "name": "label.value",
+          "label": "Title",
+          "valueType": "string",
+          "value": "Checkbox Group"
+        },
+        {
+          "component": "boolean",
+          "name": "properties.hideTitle",
+          "label": "Hide title",
+          "valueType": "boolean"
+        },
+        {
+          "component": "text",
+          "name": "dataRef",
+          "label": "Bind reference",
+          "valueType": "string"
+        },
+        {
+          "component": "boolean",
+          "name": "properties.unboundFormElement",
+          "label": "Mark as Unbound Form Element",
+          "valueType": "boolean"
+        },
+        {
+          "component": "boolean",
+          "name": "visible",
+          "label": "Show Component",
+          "valueType": "boolean",
+          "value": true
+        },
+        {
+          "component": "boolean",
+          "name": "enabled",
+          "label": "Enable Component",
+          "valueType": "boolean",
+          "value": true
+        },
+        {
+          "component": "boolean",
+          "name": "readOnly",
+          "label": "Read-only",
+          "valueType": "boolean"
+        },
+        {
+          "component": "select",
+          "name": "properties.colspan",
+          "label": "Column Span",
+          "valueType": "string",
+          "value": "12",
+          "options": [
+            {
+              "name": "1 column",
+              "value": "1"
+            },
+            {
+              "name": "2 column",
+              "value": "2"
+            },
+            {
+              "name": "3 column",
+              "value": "3"
+            },
+            {
+              "name": "4 column",
+              "value": "4"
+            },
+            {
+              "name": "5 column",
+              "value": "5"
+            },
+            {
+              "name": "6 column",
+              "value": "6"
+            },
+            {
+              "name": "7 column",
+              "value": "7"
+            },
+            {
+              "name": "8 column",
+              "value": "8"
+            },
+            {
+              "name": "9 column",
+              "value": "9"
+            },
+            {
+              "name": "10 column",
+              "value": "10"
+            },
+            {
+              "name": "11 column",
+              "value": "11"
+            },
+            {
+              "name": "12 column",
+              "value": "12"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "enum",
+          "label": "Options (Data Value)",
+          "valueType": "string",
+          "multi": true,
+          "required": true,
+          "value": [
+            "0",
+            "1"
+          ]
+        },
+        {
+          "component": "text",
+          "name": "enumNames",
+          "label": "Options (Display Value)",
+          "valueType": "string",
+          "multi": true,
+          "value": [
+            "Item 1",
+            "Item 2"
+          ]
+        },
+        {
+          "component": "text",
+          "name": "default",
+          "label": "Default option",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "properties.variant",
+          "label": "Variant",
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Cards",
+              "value": "cards"
+            }
+          ],
+          "value": "default"
+        },
+        {
+          "component": "select",
+          "label": "Save value as",
+          "name": "type",
+          "valueType": "string",
+          "value": "string[]",
+          "options": [
+            {
+              "name": "String",
+              "value": "string[]"
+            },
+            {
+              "name": "Boolean",
+              "value": "boolean[]"
+            },
+            {
+              "name": "Number",
+              "value": "number[]"
+            }
+          ]
+        },
+        {
+          "component": "radio-group",
+          "label": "Display Options",
+          "name": "properties.afs:layout.orientation",
+          "valueType": "string",
+          "value": "horizontal",
+          "options": [
+            {
+              "name": "Horizontally",
+              "value": "horizontal"
+            },
+            {
+              "name": "Vertically",
+              "value": "vertical"
+            }
+          ]
+        },
+        {
+          "component": "tab",
+          "label": "Validation",
+          "name": "validation"
+        },
+        {
+          "component": "boolean",
+          "name": "required",
+          "label": "Required",
+          "valueType": "boolean"
+        },
+        {
+          "component": "text",
+          "name": "constraintMessages.required",
+          "label": "Error message",
+          "valueType": "string",
+          "description": "Error message shown when required field is left empty."
+        },
+        {
+          "component": "text",
+          "name": "constraintMessages.validationExpression",
+          "label": "Script validation message",
+          "valueType": "string",
+          "description": "Displayed when validation script fails."
+        },
+        {
+          "component": "tab",
+          "label": "Help Content",
+          "name": "help"
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "label": "Help text",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "tooltip",
+          "label": "Short description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "fieldType",
+          "label": "fieldType",
+          "valueType": "string",
+          "value": "checkbox-group",
+          "condition": {
+            "===": [
+              1,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

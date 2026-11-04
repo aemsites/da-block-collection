@@ -1,0 +1,117 @@
+/** Wizard Styling */
+:root {
+    --form-wizard-border: 0;
+    --form-wizard-background-color: var(--background-color-primary);
+    --form-wizard-border-color: #757575;
+    --form-wizard-number-color: var(--button-primary-color);
+    --form-wizard-padding: 0px;
+    --form-wizard-padding-bottom: 160px;
+    --form-wizard-step-legend-padding: 10px;
+    --form-wizard-step-legend-font-size: 1.1rem;
+}
+
+main .form form .wizard > legend{
+    width: 100%;
+}
+
+main .form form .wizard  {
+  display: grid;
+  counter-reset: wizard-step-counter;
+  grid-template-columns: minmax(0, 1fr);
+  border: var(--form-wizard-border) solid var(--form-wizard-border-color);
+  background-color: var( --form-wizard-background-color);
+  gap: unset;
+  padding: 20px var(--form-wizard-padding);
+}
+
+main .form form .wizard > fieldset > legend{
+    display: none;
+}
+
+main .form form .wizard > fieldset:not(.current-wizard-step){
+    display: none;
+}
+
+main .form form .wizard .wizard-button-wrapper{
+    display: flex;
+    justify-content: end;
+    gap: 50px;
+    margin: var(--form-wizard-padding) 0;
+    width: 100%;
+    grid-column: span 12;
+}
+
+main .form form .wizard .wizard-button-wrapper .field-wrapper{
+    flex: unset;
+}
+
+.wizard-menu-items{
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: var(--form-fieldset-legend-font-weight);
+    font-size: var(--form-fieldset-legend-font-size);
+    color: var(--form-fieldset-legend-color);
+    padding-bottom: var(--form-wizard-padding);
+    grid-column: span 12;
+}
+
+main .form form .wizard .wizard-menu-item {
+  counter-increment: wizard-step-counter;
+}
+
+main .form form .wizard .wizard-menu-item::before {
+  content: counter(wizard-step-counter);
+  border: 2px solid var(--form-wizard-number-color);
+  color: var(--form-wizard-number-color);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 2;
+  display: inline-block;
+}
+
+main .form form .wizard .wizard-menu-active-item::before{
+  border: 2px solid var(--form-wizard-number-color);
+  background: var(--form-wizard-number-color);
+  color: var(--background-color-primary);
+  font-weight: 600;
+}
+
+/* wizard title on left */
+main .form form .wizard.left{
+  display: flex;
+}
+
+main .form form .wizard.left .wizard-menu-items{
+  flex-direction: column;
+  width: 300px;
+}
+
+main .form form .wizard.left .panel-wrapper{
+  flex: 1;
+}
+
+main .form form .wizard > .field-description {
+    width: 100%;
+}
+
+main form .wizard > .current-wizard-step.panel-wrapper:first-of-type ~ .wizard-button-wrapper > .wizard-button-prev,
+main form .wizard > .current-wizard-step.panel-wrapper:last-of-type ~ .wizard-button-wrapper > .wizard-button-next {
+    display: none;
+}
+
+@media (width <= 599px) {
+    main .form form .wizard  {
+        .wizard-menu-items {
+            gap: 20px;
+        }
+
+        margin: 0;
+    }
+}

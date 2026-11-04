@@ -1,12 +1,44 @@
 [
   {
     "id": "main",
-    "components": ["section"]
+    "components": [
+      "section"
+    ]
   },
   {
     "...": "./section.json#/filters"
   },
   {
     "...": "./blocks/*.json#/filters"
+  },
+  {
+    "id": "form-fields",
+    "components": [
+      "captcha",
+      "checkbox",
+      "checkbox-group",
+      "date-input",
+      "drop-down",
+      "email",
+      "file-input",
+      "form-accordion",
+      "form-button",
+      "form-image",
+      "form-modal",
+      "form-reset-button",
+      "form-submit-button",
+      "multiline-input",
+      "number-input",
+      "panel",
+      "password",
+      "plain-text",
+      "radio-group",
+      "range",
+      "rating",
+      "telephone-input",
+      "text-input",
+      "tnc",
+      "wizard"
+    ]
   }
 ]

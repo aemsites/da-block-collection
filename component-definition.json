@@ -207,6 +207,42 @@
           }
         },
         {
+          "title": "Form",
+          "id": "form",
+          "model": "form-settings",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div class=\"form\"><div><div><pre><code>{\"adaptiveform\":\"0.10.0\",\"metadata\":{\"grammar\":\"json-formula-1.0.0\",\"version\":\"1.0.0\"},\"items\":[]}</code></pre></div></div></div>",
+              "fields": [
+                {
+                  "name": "title",
+                  "selector": ".json-prop-title > div"
+                },
+                {
+                  "name": "properties.fd:submit.actionName",
+                  "selector": ".json-prop-properties_fd_submit_actionName > div"
+                },
+                {
+                  "name": "properties.fd:submit.configUrl",
+                  "selector": ".json-prop-properties_fd_submit_configUrl > div"
+                },
+                {
+                  "name": "action",
+                  "selector": ".json-prop-action > div"
+                },
+                {
+                  "name": "thankYouMsg",
+                  "selector": ".json-prop-thankYouMsg > div"
+                },
+                {
+                  "name": "redirectUrl",
+                  "selector": ".json-prop-redirectUrl > div"
+                }
+              ]
+            }
+          }
+        },
+        {
           "title": "Fragment",
           "id": "fragment",
           "model": "fragment",
@@ -369,6 +405,267 @@
                   "selector": "div>div>picture>img[src]"
                 }
               ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Adaptive Form Components",
+      "id": "form-components",
+      "components": [
+        {
+          "title": "Captcha (Invisible)",
+          "id": "captcha",
+          "model": "captcha",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Checkbox group",
+          "id": "checkbox-group",
+          "model": "checkbox-group",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Checkbox",
+          "id": "checkbox",
+          "model": "checkbox",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Date Input",
+          "id": "date-input",
+          "model": "date-input",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Dropdown List",
+          "id": "drop-down",
+          "model": "drop-down",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Email",
+          "id": "email",
+          "model": "email",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "File Attachment",
+          "id": "file-input",
+          "model": "file-input",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Accordion",
+          "id": "form-accordion",
+          "model": "form-accordion",
+          "filter": "form-fields",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Button",
+          "id": "form-button",
+          "model": "form-button",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Image",
+          "id": "form-image",
+          "model": "form-image",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Modal",
+          "id": "form-modal",
+          "model": "form-modal",
+          "filter": "form-fields",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Reset",
+          "id": "form-reset-button",
+          "model": "form-reset-button",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Submit",
+          "id": "form-submit-button",
+          "model": "form-submit-button",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Multiline Input",
+          "id": "multiline-input",
+          "model": "multiline-input",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Number Input",
+          "id": "number-input",
+          "model": "number-input",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Panel",
+          "id": "panel",
+          "model": "panel",
+          "filter": "form-fields",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Password",
+          "id": "password",
+          "model": "password",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Text",
+          "id": "plain-text",
+          "model": "plain-text",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Radio Group",
+          "id": "radio-group",
+          "model": "radio-group",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Range",
+          "id": "range",
+          "model": "range",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Rating",
+          "id": "rating",
+          "model": "rating",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Telephone input",
+          "id": "telephone-input",
+          "model": "telephone-input",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Text Input",
+          "id": "text-input",
+          "model": "text-input",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Terms and conditions",
+          "id": "tnc",
+          "model": "tnc",
+          "filter": "form-fields",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Wizard",
+          "id": "wizard",
+          "model": "wizard",
+          "filter": "form-fields",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
             }
           }
         }

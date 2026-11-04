@@ -1,0 +1,42 @@
+{
+  "definitions": [
+    {
+      "title": "Form",
+      "id": "form",
+      "model": "form-settings",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div class=\"form\"><div><div><pre><code>{\"adaptiveform\":\"0.10.0\",\"metadata\":{\"grammar\":\"json-formula-1.0.0\",\"version\":\"1.0.0\"},\"items\":[]}</code></pre></div></div></div>",
+          "fields": [
+            {
+              "name": "title",
+              "selector": ".json-prop-title > div"
+            },
+            {
+              "name": "properties.fd:submit.actionName",
+              "selector": ".json-prop-properties_fd_submit_actionName > div"
+            },
+            {
+              "name": "properties.fd:submit.configUrl",
+              "selector": ".json-prop-properties_fd_submit_configUrl > div"
+            },
+            {
+              "name": "action",
+              "selector": ".json-prop-action > div"
+            },
+            {
+              "name": "thankYouMsg",
+              "selector": ".json-prop-thankYouMsg > div"
+            },
+            {
+              "name": "redirectUrl",
+              "selector": ".json-prop-redirectUrl > div"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [],
+  "filters": []
+}

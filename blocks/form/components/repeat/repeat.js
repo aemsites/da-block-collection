@@ -2,30 +2,6 @@ import { getId } from '../../util.js';
 import { subscribe } from '../../rules/index.js';
 
 /**
- * Updates radio button and checkbox names to ensure proper grouping within repeatable instances.
- * Radio buttons and checkboxes in the same instance share the same name,
- * but different instances have different group names.
- * @param {HTMLElement} instance - The repeatable instance element
- * @param {number} index - The index of the instance
- */
-function updateRadioCheckboxNames(instance, index) {
-  // Only update if this is actually a repeatable instance
-  if (!instance.dataset.repeatable || instance.dataset.repeatable !== 'true') {
-    return;
-  }
-
-  // Update radio button and checkbox names
-  instance.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach((element) => {
-    const baseName = element.name.replace(/-\d+$/, '');
-    const expectedName = index > 0 ? `${baseName}-${index}` : baseName;
-
-    if (element.name !== expectedName) {
-      element.name = expectedName;
-    }
-  });
-}
-
-/**
  * Updates a fieldset instance with proper IDs and labels.
  * @param {HTMLElement} fieldset - The fieldset element to update
  * @param {number} index - The index of the instance
@@ -108,7 +84,7 @@ function getInstances(el) {
 }
 
 /**
- * Strategy pattern for handling different form types (AF based and document based)
+ * Repeat handling for Adaptive Forms, backed by the form model
  */
 const repeatStrategies = {
   af: {
@@ -168,65 +144,13 @@ const repeatStrategies = {
     },
   },
 
-  doc: {
-    /**
-     * Adds a new instance using direct DOM manipulation (document-based forms).
-     * @param {HTMLElement} wrapper - The repeat wrapper element
-     * @param {HTMLElement} form - The form element
-     */
-    addInstance: (wrapper, form) => {
-      const fieldset = wrapper['#repeat-template'];
-      const childCount = wrapper.children.length - 1;
-      const newFieldset = fieldset.cloneNode(true);
-      newFieldset.setAttribute('data-index', childCount);
-      update(newFieldset, childCount, wrapper['#repeat-template-label']);
-      updateRadioCheckboxNames(newFieldset, childCount);
-
-      const actions = wrapper.querySelector('.repeat-actions');
-      actions.insertAdjacentElement('beforebegin', newFieldset);
-
-      // Add remove button to the new instance
-      // eslint-disable-next-line no-use-before-define
-      insertRemoveButton(newFieldset, wrapper, repeatStrategies.doc);
-
-      // Add remove buttons to all existing instances that don't have them
-      // (this handles the case where we started with min instances and no buttons)
-      // eslint-disable-next-line no-use-before-define
-      addRemoveButtons(wrapper, form, repeatStrategies.doc);
-
-      updateRepeatState(wrapper);
-
-      const event = new CustomEvent('item:add', {
-        detail: { item: { name: newFieldset.name, id: newFieldset.id } },
-        bubbles: false,
-      });
-      form.dispatchEvent(event);
-    },
-
-    /**
-     * Removes an instance using direct DOM manipulation (document-based forms).
-     * @param {HTMLElement} fieldset - The fieldset to remove
-     * @param {HTMLElement} wrapper - The repeat wrapper element
-     * @param {HTMLElement} form - The form element
-     */
-    removeInstance: (fieldset, wrapper) => {
-      fieldset.remove();
-      wrapper.querySelectorAll('[data-repeatable="true"]').forEach((el, index) => {
-        update(el, index, wrapper['#repeat-template-label']);
-      });
-      wrapper.querySelectorAll('[data-repeatable="true"]').forEach((el, index) => {
-        updateRadioCheckboxNames(el, index);
-      });
-      updateRepeatState(wrapper);
-    },
-  },
 };
 
 /**
  * Inserts a remove button into a fieldset instance.
  * @param {HTMLElement} fieldset - The fieldset to add the button to
  * @param {HTMLElement} wrapper - The repeat wrapper element
- * @param {Object} strategy - The repeat strategy object (af or doc), defaults to af strategy
+ * @param {Object} strategy - The repeat strategy object, defaults to the af strategy
  */
 export function insertRemoveButton(fieldset, wrapper, strategy = repeatStrategies.af) {
   const label = wrapper.dataset?.repeatDeleteButtonLabel || fieldset.dataset?.repeatDeleteButtonLabel || 'Delete';
@@ -237,12 +161,7 @@ export function insertRemoveButton(fieldset, wrapper, strategy = repeatStrategie
     const allInstances = repeatWrapper.querySelectorAll('[data-repeatable="true"]');
     const currentIndex = Array.from(allInstances).indexOf(fieldset);
 
-    // Determine which removeInstance signature based on strategy type
-    if (strategy === repeatStrategies.doc) {
-      strategy.removeInstance(fieldset, wrapper);
-    } else {
-      strategy.removeInstance(wrapper, currentIndex);
-    }
+    strategy.removeInstance(wrapper, currentIndex);
   });
 
   fieldset.append(removeButton);
@@ -252,7 +171,7 @@ export function insertRemoveButton(fieldset, wrapper, strategy = repeatStrategie
  * Adds remove buttons to instances that don't already have them.
  * @param {HTMLElement} wrapper - The repeat wrapper element
  * @param {HTMLElement} form - The form element
- * @param {Object} strategy - The repeat strategy object (af or doc)
+ * @param {Object} strategy - The repeat strategy object
  */
 function addRemoveButtons(wrapper, form, strategy) {
   const instances = wrapper.querySelectorAll('[data-repeatable="true"]');
@@ -271,7 +190,7 @@ function addRemoveButtons(wrapper, form, strategy) {
  * Adds a new instance using the appropriate strategy.
  * @param {HTMLElement} wrapper - The repeat wrapper element
  * @param {HTMLElement} form - The form element
- * @param {Object} strategy - The repeat strategy object (af or doc)
+ * @param {Object} strategy - The repeat strategy object
  */
 export function addInstance(wrapper, form, strategy) {
   strategy.addInstance(wrapper, form);
@@ -281,7 +200,7 @@ export function addInstance(wrapper, form, strategy) {
  * Inserts an add button into the repeat wrapper.
  * @param {HTMLElement} wrapper - The repeat wrapper element
  * @param {HTMLElement} form - The form element
- * @param {Object} strategy - The repeat strategy object (af or doc), defaults to af strategy
+ * @param {Object} strategy - The repeat strategy object, defaults to the af strategy
  */
 export function insertAddButton(wrapper, form, strategy = repeatStrategies.af) {
   const actions = document.createElement('div');
@@ -307,8 +226,7 @@ export function insertAddButton(wrapper, form, strategy = repeatStrategies.af) {
 export default function transferRepeatableDOM(form, formDef, container, formId) {
   form.querySelectorAll('[data-repeatable="true"][data-index="0"]').forEach((el) => {
     const instances = getInstances(el);
-    const isDocBased = form.dataset.source !== 'aem';
-    const strategy = repeatStrategies[isDocBased ? 'doc' : 'af'];
+    const strategy = repeatStrategies.af;
 
     const wrapper = document.createElement('div');
     wrapper.dataset.min = el.dataset.min || 0;
@@ -341,13 +259,6 @@ export default function transferRepeatableDOM(form, formDef, container, formId) 
     // Setup form-specific logic using strategy pattern
     if (strategy.setup) {
       strategy.setup(wrapper, form, formId);
-    }
-
-    // Update radio button and checkbox names for doc-based forms only
-    if (isDocBased) {
-      wrapper.querySelectorAll('[data-repeatable="true"]').forEach((instance, index) => {
-        updateRadioCheckboxNames(instance, index);
-      });
     }
 
     // Add remove buttons only if there are more instances than minimum

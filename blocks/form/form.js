@@ -6,9 +6,7 @@ import {
 import GoogleReCaptcha from './integrations/recaptcha.js';
 import componentDecorator from './mappings.js';
 import { handleSubmit } from './submit.js';
-import DocBasedFormToAF from './transform.js';
 import {
-  checkValidation,
   createButton,
   createDropdownUsingEnum,
   createFieldWrapper,
@@ -308,22 +306,6 @@ export async function generateFormRendition(panel, container, formId, getItems =
   await componentDecorator(container, panel, null, formId);
 }
 
-function enableValidation(form) {
-  form.querySelectorAll('input,textarea,select').forEach((input) => {
-    input.addEventListener('invalid', (event) => {
-      checkValidation(event.target);
-    });
-  });
-
-  form.addEventListener('change', (event) => {
-    checkValidation(event.target);
-  });
-}
-
-function isDocumentBasedForm(formDef) {
-  return formDef?.[':type'] === 'sheet' && formDef?.data;
-}
-
 async function createFormForAuthoring(formDef) {
   const form = document.createElement('form');
   await generateFormRendition(formDef, form, formDef.id, (container) => {
@@ -335,11 +317,11 @@ async function createFormForAuthoring(formDef) {
   return form;
 }
 
-export async function createForm(formDef, data, source = 'aem') {
+export async function createForm(formDef, data) {
   const { action: formPath } = formDef;
   const form = document.createElement('form');
   form.dataset.action = formPath;
-  form.dataset.source = source;
+  form.dataset.source = 'aem';
   form.noValidate = true;
   if (formDef.appliedCssClassNames) {
     form.className = formDef.appliedCssClassNames;
@@ -362,10 +344,6 @@ export async function createForm(formDef, data, source = 'aem') {
     captcha.loadCaptcha(form);
   }
 
-  // Only enable DOM validation for doc-based forms; edge forms use the model.
-  if (source === 'sheet') {
-    enableValidation(form);
-  }
   transferRepeatableDOM(form, formDef, form, formId);
 
   if (afModule && typeof Worker === 'undefined') {
@@ -375,8 +353,7 @@ export async function createForm(formDef, data, source = 'aem') {
   }
 
   form.addEventListener('reset', async () => {
-    const currentSource = form.dataset.source || 'aem';
-    const response = await createForm(formDef, undefined, currentSource);
+    const response = await createForm(formDef);
     if (response?.form) {
       document.querySelector(`[data-action="${form?.dataset?.action}"]`)?.replaceWith(response?.form);
     }
@@ -517,7 +494,7 @@ function shouldRouteToSubmissionService(actionType) {
   return SUPPORTED_SUBMISSION_ACTION_TYPES.includes(actionType);
 }
 
-async function setupForm(formDef, { pathname, block, editMode = false } = {}) {
+async function setupForm(formDef, { pathname, editMode = false } = {}) {
   const submitProps = formDef?.properties?.['fd:submit'];
   const actionType = submitProps?.actionName || formDef?.properties?.actionType;
   if (shouldRouteToSubmissionService(actionType)) {
@@ -529,38 +506,27 @@ async function setupForm(formDef, { pathname, block, editMode = false } = {}) {
     formDef.action = getSubmitBaseUrl() + (formDef.action || '');
   }
 
-  let def = formDef;
   let form;
   let afbForm;
 
-  if (isDocumentBasedForm(formDef)) {
-    def = new DocBasedFormToAF().transform(formDef, { block });
-    loadFormCustomStyles(def);
-    form = (await createForm(def, null, 'sheet'))?.form;
-    const docRuleEngine = await import('./rules-doc/index.js');
-    docRuleEngine.default(def, form);
-    form.dataset.source = 'sheet';
-    form.dataset.rules = false;
+  loadFormCustomStyles(formDef);
+  afModule = await import('./rules/index.js');
+  addRequestContextToForm(formDef);
+  if (afModule && afModule.initAdaptiveForm && !editMode) {
+    ({ form, afbForm } = await afModule.initAdaptiveForm(formDef, createForm));
   } else {
-    loadFormCustomStyles(formDef);
-    afModule = await import('./rules/index.js');
-    addRequestContextToForm(formDef);
-    if (afModule && afModule.initAdaptiveForm && !editMode) {
-      ({ form, afbForm } = await afModule.initAdaptiveForm(formDef, createForm));
-    } else {
-      form = await createFormForAuthoring(formDef);
-    }
-    form.dataset.source = 'aem';
-    form.dataset.rules = true;
-    if (def.properties && def.properties['fd:path']) {
-      form.dataset.formpath = def.properties['fd:path'];
-    }
+    form = await createFormForAuthoring(formDef);
+  }
+  form.dataset.source = 'aem';
+  form.dataset.rules = true;
+  if (formDef.properties && formDef.properties['fd:path']) {
+    form.dataset.formpath = formDef.properties['fd:path'];
   }
 
-  form.dataset.redirectUrl = def.redirectUrl || '';
-  form.dataset.thankYouMsg = def.thankYouMsg || '';
-  form.dataset.action = def.action || pathname?.split('.json')[0];
-  form.dataset.id = def.id;
+  form.dataset.redirectUrl = formDef.redirectUrl || '';
+  form.dataset.thankYouMsg = formDef.thankYouMsg || '';
+  form.dataset.action = formDef.action || pathname?.split('.json')[0];
+  form.dataset.id = formDef.id;
   return { form, afbForm };
 }
 
@@ -585,7 +551,6 @@ export default async function decorate(block) {
   if (formDef) {
     ({ form, afbForm } = await setupForm(formDef, {
       pathname,
-      block,
       editMode: block.classList.contains('edit-mode'),
     }));
     container.replaceWith(form);
